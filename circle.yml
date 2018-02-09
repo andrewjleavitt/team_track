@@ -1,3 +1,9 @@
 test:
   post:
     - bundle exec rake test:system
+
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: weekly-team-planner
