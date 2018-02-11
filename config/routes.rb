@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  resources :members
+  resources :members, except: :destroy
 end
