@@ -1,0 +1,7 @@
+<%= form_with model: @member do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, id: 'Name' %>
+  </p>
+  <%= f.submit "Save" %>
+<% end %>
