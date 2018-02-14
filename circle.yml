@@ -10,12 +10,12 @@ jobs:
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           PGHOST: 127.0.0.1
-          PGUSER: circleci-demo-ruby
+          PGUSER: root
           RAILS_ENV: test
       - image: circleci/postgres:9.5-alpine
         environment:
-          POSTGRES_USER: circleci-demo-ruby
-          POSTGRES_DB: rails_blog
+          POSTGRES_USER: root
+          POSTGRES_DB: team_track_test
           POSTGRES_PASSWORD: ""
     steps:
       - checkout
