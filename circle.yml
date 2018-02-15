@@ -67,7 +67,7 @@ jobs:
 
       - type: shell
         command: |
-          bundle exec rails test
+          bin/rails test
 
       # Save test results for timing analysis
       - store_test_results:
