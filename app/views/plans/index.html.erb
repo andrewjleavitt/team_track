@@ -1,0 +1,10 @@
+<h1>Plans</h1>
+
+<% @plans.each do |plan| %>
+<div class="plan-for-team">
+  <h2><%= plan.team %></h2>
+  <h3><%= plan.project %></h3>
+  <h3><%= plan.project_due %></h3>
+  <h3><%= plan.project_status %></h3>
+</div>
+<% end %>

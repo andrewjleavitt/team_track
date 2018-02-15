@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team: A-Team
+  project: Project X
+  project_due: January 1, 2000
+  project_status: Green
+
+two:
+  team: B-Team
+  project: Project Y
+  project_due: January 2, 2000
+  project_status: Yellow
+
+three:
+  team: C-Team
+  project: Project Z
+  project_due: January 3, 2000
+  project_status: Red
