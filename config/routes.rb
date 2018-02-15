@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
 
   resources :members, except: :destroy
-  get 'plans', to: 'plans#index'
+  resources :plans, only: [:index, :new, :create]
 end

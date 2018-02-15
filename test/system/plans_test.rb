@@ -35,4 +35,19 @@ class PlansTest < ApplicationSystemTestCase
     assert_text "March 31, 2018"
     assert_text "Green"
   end
+
+  test "creating a plan" do
+    visit plans_url
+    click_on "New Plan"
+    fill_in "plan[team]", with: "The Scuba Squad"
+    fill_in "plan[project]", with: "World Peace"
+    fill_in "plan[project_due]", with: "March 31, 2018"
+    fill_in "plan[project_status]", with: "Green"
+    click_on "Save"
+
+    assert_text "The Scuba Squad"
+    assert_text "World Peace"
+    assert_text "March 31, 2018"
+    assert_text "Green"
+  end
 end
