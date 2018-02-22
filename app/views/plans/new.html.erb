@@ -14,7 +14,7 @@
   <%= f.text_field :project_status %>
 
   <%= label_tag :week%>
-  <%= f.date_field :week %>
+  <%= f.select(:week, Plan.weeks) %>
 
   <%= f.submit "Save" %>
 <% end %>

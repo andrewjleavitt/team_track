@@ -35,7 +35,7 @@ class PlansTest < ApplicationSystemTestCase
     fill_in "plan[project]", with: "World Peace"
     fill_in "plan[project_due]", with: due_date
     fill_in "plan[project_status]", with: "Green"
-    fill_in "plan[week]", with: week
+    select week, from: "plan[week]"
     click_on "Save"
 
     assert_text "The Scuba Squad"
