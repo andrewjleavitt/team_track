@@ -1,11 +1,15 @@
 <h1>Plans</h1>
-<%= link_to "New Plan", new_plan_path %>
-
-<% @plans.each do |plan| %>
-<div class="plan-for-team">
-  <h2><%= plan.team %></h2>
-  <h3><%= plan.project %></h3>
-  <h3><%= plan.project_due %></h3>
-  <h3><%= plan.project_status %></h3>
+<div>
+  <%= link_to "New Plan", new_plan_path %>
 </div>
+<% @plans.each do |plan| %>
+  <div class="plan-card">
+    <span><strong><%= plan.team %></strong></span>
+    <div>
+      <span><%= plan.project %></span> <br>
+      <span><%= plan.project_due %></span> <br>
+      <span><%= plan.project_status %></span> <br>
+      <span><%= plan.week %></span> <br>
+    </div>
+  </div><br>
 <% end %>

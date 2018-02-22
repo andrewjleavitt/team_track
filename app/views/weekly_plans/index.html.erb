@@ -1,0 +1,12 @@
+<h1>Weekly Plans</h1>
+
+<h2>Plan for <%= Date.today.beginning_of_week %></h2>
+
+<% @plans.each do |plan| %>
+  <h3><%= plan.team %></h3>
+  <ul>
+    <li><%= plan.project %></li>
+    <li><%= plan.project_status %></li>
+    <li><%= plan.project_due %></li>
+  </ul>
+<% end %>
