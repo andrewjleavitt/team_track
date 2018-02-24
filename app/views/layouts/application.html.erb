@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <ul class="menu">
+      <li><%= link_to "Main Menu", root_path %></li>
+      <li><%= link_to "Weekly Plans", weekly_plans_path %></li>
+      <li><%= link_to "Plans", plans_path %></li>
+      <li><%= link_to "Members", members_path %></li>
+    </ul>
+    <% if flash.notice %>
+      <div class="notice"><%= flash.notice %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

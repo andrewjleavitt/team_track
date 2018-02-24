@@ -18,4 +18,10 @@ class WeeklyPlansTest < ApplicationSystemTestCase
     assert_text "Yellow"
     refute_text "Project Z"
   end
+
+  test "emailing a weekly plan" do
+    visit weekly_plans_url
+    click_button "Send the message"
+    assert_text "Message sent."
+  end
 end

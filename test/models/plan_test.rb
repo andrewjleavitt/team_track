@@ -16,4 +16,10 @@ class PlanTest < ActiveSupport::TestCase
       actual_weeks
     )
   end
+
+  test "#current_plan" do
+    assert_equal(2, Plan.current_plan.length)
+    expected_results = [plans(:one), plans(:two)]
+    assert_equal(expected_results.to_ary.sort, Plan.current_plan.to_ary.sort)
+  end
 end

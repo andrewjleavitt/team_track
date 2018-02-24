@@ -10,3 +10,5 @@
     <li><%= plan.project_due %></li>
   </ul>
 <% end %>
+
+<%= button_to "Send the message", weekly_plans_url, data: {disable_with: "sending the message..."} %>

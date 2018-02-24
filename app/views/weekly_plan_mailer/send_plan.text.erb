@@ -1,0 +1,13 @@
+The Plan for the Week!
+======================
+
+Hello Friendly Mavens!</
+Here are the plans:
+
+<%= @plans.each do |plan| %>
+  <%= plan.team %>
+  <%= plan.project %>
+  <%= plan.project_due %>
+  <%= plan.project_status %>
+  ==========================
+<% end %>

@@ -1,0 +1,13 @@
+<h1>The Plan for the Week!</h1>
+
+<p>Hello Friendly Mavens!</p>
+<p>Here are the plans:</p>
+
+<%= @plans.each do |plan| %>
+  <h3><%= plan.team %></h3>
+  <ul>
+    <li><%= plan.project %></li>
+    <li><%= plan.project_due %></li>
+    <li><%= plan.project_status %></li>
+  </ul>
+<% end %>
