@@ -14,8 +14,10 @@ class MembersTest < ApplicationSystemTestCase
     visit members_url
     click_on 'New Member'
     fill_in 'Name', with: 'Bobba Fett'
+    select 'B-Team', from: 'member[team]'
     click_on 'Save'
     assert_text 'Bobba Fett'
+    assert_text 'B-Team'
   end
 
   test 'editing a member' do
@@ -24,7 +26,9 @@ class MembersTest < ApplicationSystemTestCase
     click_on 'Bobba Fett'
     click_on 'Edit'
     fill_in 'Name', with: 'Ben Kenobi'
+    select 'A-Team', from: 'member[team]'
     click_on 'Save'
     assert_text 'Ben Kenobi'
+    assert_text 'A-Team'
   end
 end

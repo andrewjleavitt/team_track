@@ -9,10 +9,12 @@ class MembersController < ApplicationController
 
   def new
     @member = Member.new
+    @teams = Plan.all.pluck(:team).uniq
   end
 
   def edit
     @member = Member.find(params[:id])
+    @teams = Plan.all.pluck(:team).uniq
   end
 
   def create
@@ -29,7 +31,7 @@ class MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:name)
+    params.require(:member).permit(:name, :team)
   end
 
 end

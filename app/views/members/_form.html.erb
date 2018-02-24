@@ -2,6 +2,8 @@
   <p>
     <%= f.label :name %>
     <%= f.text_field :name, id: 'Name' %>
+    <%= f.label :team %>
+    <%= f.select :team, @teams, include_blank: true %>
   </p>
   <%= f.submit "Save" %>
 <% end %>
