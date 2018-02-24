@@ -8,7 +8,7 @@ class WeeklyPlanMailerTest < ActionMailer::TestCase
       email.deliver_now
     end
 
-    assert_equal ['notifications@mavenlink.com'], email.from
+    assert_equal ['notifications@weekly-team-planner.herokuapp.com'], email.from
     assert_equal ['aleavitt@mavenlink.com'], email.to
     assert_equal "The Plan for the Week", email.subject
   end

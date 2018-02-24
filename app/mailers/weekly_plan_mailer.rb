@@ -1,5 +1,5 @@
 class WeeklyPlanMailer < ApplicationMailer
-  default from: 'notifications@mavenlink.com'
+  default from: 'notifications@weekly-team-planner.herokuapp.com'
 
   def send_plan
     @plans = Plan.current_plan
