@@ -5,7 +5,7 @@ class PlansController < ApplicationController
 
   def new
     @weeks = Plan.weeks
-    @teams = Teams.unique
+    @teams = Team.all
   end
 
   def create

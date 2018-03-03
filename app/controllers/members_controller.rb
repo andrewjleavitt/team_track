@@ -9,12 +9,12 @@ class MembersController < ApplicationController
 
   def new
     @member = Member.new
-    @teams = Teams.unique
+    @teams = Team.all
   end
 
   def edit
     @member = Member.find(params[:id])
-    @teams = Teams.unique
+    @teams = Team.all
   end
 
   def create

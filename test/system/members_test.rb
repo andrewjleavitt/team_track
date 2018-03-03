@@ -1,34 +1,39 @@
 require 'application_system_test_case'
 
 class MembersTest < ApplicationSystemTestCase
-  member_attributes = {name: 'Bobba Fett'}
+
+  setup do
+    @team = create(:team)
+    @member = build(:member)
+  end
+
   test 'visiting the index' do
-    Member.create(member_attributes)
+    create(:member, name: "Gentleman Steve")
     visit members_url
 
     assert_selector 'h1', text: 'Members'
-    assert_text 'Bobba Fett'
+    assert_text "Gentleman Steve"
   end
 
   test 'creating a member' do
     visit members_url
     click_on 'New Member'
-    fill_in 'Name', with: 'Bobba Fett'
-    select 'B-Team', from: 'member[team]'
+    fill_in 'Name', with: @member.name
+    select @team.name, from: 'member[team]'
     click_on 'Save'
-    assert_text 'Bobba Fett'
-    assert_text 'B-Team'
+    assert_text @member.name
+    assert_text @team.name
   end
 
   test 'editing a member' do
-    Member.create(member_attributes)
+    create(:member)
     visit members_url
-    click_on 'Bobba Fett'
+    click_on @member.name
     click_on 'Edit'
     fill_in 'Name', with: 'Ben Kenobi'
-    select 'A-Team', from: 'member[team]'
+    select @team.name, from: 'member[team]'
     click_on 'Save'
     assert_text 'Ben Kenobi'
-    assert_text 'A-Team'
+    assert_text @team.name
   end
 end
