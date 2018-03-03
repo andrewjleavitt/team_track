@@ -4,7 +4,7 @@ class WeeklyPlanMailer < ApplicationMailer
   def send_plan
     @plans = Plan.current_plan
     mail(
-      to: 'aleavitt@mavenlink.com',
+      to: ENV['EMAIL_TO_ADDRESS'] || 'test@example.com',
       subject: 'The Plan for the Week'
     )
   end
