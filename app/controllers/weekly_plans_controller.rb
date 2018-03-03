@@ -1,4 +1,5 @@
 class WeeklyPlansController < ApplicationController
+
   def index
     @plans = Plan.current_plan
   end
