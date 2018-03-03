@@ -2,7 +2,7 @@
 
 <%= form_with model: Plan.new do |f| %>
   <%= label_tag :team %>
-  <%= f.text_field :team %>
+  <%= f.select :team, @teams %>
 
   <%= label_tag :project%>
   <%= f.text_field :project %>
@@ -14,7 +14,7 @@
   <%= f.text_field :project_status %>
 
   <%= label_tag :week%>
-  <%= f.select(:week, Plan.weeks) %>
+  <%= f.select :week, @weeks %>
 
   <%= f.submit "Save" %>
 <% end %>

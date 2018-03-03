@@ -31,14 +31,14 @@ class PlansTest < ApplicationSystemTestCase
 
     visit plans_url
     click_on "New Plan"
-    fill_in "plan[team]", with: "The Scuba Squad"
+    select "A-Team", from: "plan[team]"
     fill_in "plan[project]", with: "World Peace"
     fill_in "plan[project_due]", with: due_date
     fill_in "plan[project_status]", with: "Green"
     select week, from: "plan[week]"
     click_on "Save"
 
-    assert_text "The Scuba Squad"
+    assert_text "A-Team"
     assert_text "World Peace"
     assert_text due_date
     assert_text "Green"
