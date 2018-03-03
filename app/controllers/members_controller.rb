@@ -9,12 +9,12 @@ class MembersController < ApplicationController
 
   def new
     @member = Member.new
-    @teams = Plan.all.pluck(:team).uniq
+    @teams = Teams.unique
   end
 
   def edit
     @member = Member.find(params[:id])
-    @teams = Plan.all.pluck(:team).uniq
+    @teams = Teams.unique
   end
 
   def create

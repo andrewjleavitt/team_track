@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Plan.all.pluck(:team).uniq
+    @teams = Teams.unique
   end
 end
