@@ -1,6 +1,7 @@
 <h1>Teams</h1>
+<%= link_to "New Team", new_team_path %>
 <ul>
   <% @teams.each do |team| %>
-    <li class="team"><%= team %></li>
+    <li class="team"><%= team.name %></li>
   <% end %>
 </ul>
