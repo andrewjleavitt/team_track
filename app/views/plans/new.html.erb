@@ -5,7 +5,7 @@
   <%= f.collection_select(:team, @teams, :name, :name) %>
 
   <%= label_tag :project%>
-  <%= f.text_field :project %>
+  <%= f.collection_select(:project, @projects, :name, :name) %>
 
   <%= label_tag :project_due%>
   <%= f.text_field :project_due %>

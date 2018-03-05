@@ -6,6 +6,7 @@ class TeamsTest < ApplicationSystemTestCase
     Team.create(name: "B-Team")
     Team.create(name: "C-Team")
   end
+
   test "visiting the index" do
     visit teams_url
 

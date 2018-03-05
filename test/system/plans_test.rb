@@ -29,19 +29,22 @@ class PlansTest < ApplicationSystemTestCase
     due_date = Date.today + 1.month
     week = Date.today.beginning_of_week
     team = create(:team)
+    project = create(:project)
+
     visit plans_url
+
     click_on "New Plan"
     select team.name, from: "plan[team]"
-    fill_in "plan[project]", with: "World Peace"
+    select project.name, from: "plan[project]"
     fill_in "plan[project_due]", with: due_date
-    fill_in "plan[project_status]", with: "Green"
+    fill_in "plan[project_status]", with: project.status
     select week, from: "plan[week]"
     click_on "Save"
 
     assert_text team.name
-    assert_text "World Peace"
+    assert_text project.name
     assert_text due_date
-    assert_text "Green"
+    assert_text project.status
     assert_text week
   end
 end

@@ -6,6 +6,7 @@ class PlansController < ApplicationController
   def new
     @weeks = Plan.weeks
     @teams = Team.all
+    @projects = Project.all
   end
 
   def create
