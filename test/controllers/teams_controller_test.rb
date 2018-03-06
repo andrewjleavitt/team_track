@@ -21,4 +21,10 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
     assert_match("Created #{team_attributes[:name]}", flash[:notice])
     assert_redirected_to teams_path
   end
+
+  test "should get show" do
+    team = create(:team)
+    get team_url team
+    assert_response :success
+  end
 end

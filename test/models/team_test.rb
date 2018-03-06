@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class TeamTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "#members_for" do
+    team = create(:team)
+    member = create(:member, team: team.name)
+
+    assert_equal([member], Team.members_for(team.name))
+  end
 end

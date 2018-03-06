@@ -25,4 +25,18 @@ class TeamsTest < ApplicationSystemTestCase
     assert_text "Created The Scuba Squad"
     assert_selector "li.team", text: "The Scuba Squad"
   end
+
+  test "viewing team details shows members on a team" do
+    team = create(:team, name: "Super-Squad!")
+    member = create(:member, team: "Super-Squad!")
+
+    visit teams_url
+    click_on team.name
+
+    assert_selector "h1", text: team.name
+    assert_selector "h2", text: "Team Membership"
+
+    assert_selector "li.team-member", text: member.name
+  end
+
 end
