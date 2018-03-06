@@ -17,7 +17,7 @@ class MembersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create member" do
     assert_difference('Member.count') do
-      post members_url, params: { member: { name: 'Joe Cool' } }
+      post members_url, params: { member: { name: 'Joe Cool'} }
     end
 
     assert_redirected_to members_path

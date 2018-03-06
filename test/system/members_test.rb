@@ -19,7 +19,7 @@ class MembersTest < ApplicationSystemTestCase
     visit members_url
     click_on 'New Member'
     fill_in 'Name', with: @member.name
-    select @team.name, from: 'member[team]'
+    select @team.name, from: 'member[team_id]'
     click_on 'Save'
     assert_text @member.name
     assert_text @team.name
@@ -31,7 +31,7 @@ class MembersTest < ApplicationSystemTestCase
     click_on @member.name
     click_on 'Edit'
     fill_in 'Name', with: 'Ben Kenobi'
-    select @team.name, from: 'member[team]'
+    select @team.name, from: 'member[team_id]'
     click_on 'Save'
     assert_text 'Ben Kenobi'
     assert_text @team.name

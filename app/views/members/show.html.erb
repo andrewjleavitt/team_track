@@ -1,4 +1,4 @@
 <h1>Member Detail</h1>
 <h2><%= @member.name %>  </h2>
-<p><%= @member.team %></p>
+<p><%= @member.current_team.name %></p>
 <%= link_to 'Edit', edit_member_path(@member) %>
