@@ -7,7 +7,7 @@ Here are the plans:
 <%= @plans.each do |plan| %>
   <%= plan.team %>
   <%= plan.project %>
-  <%= plan.project_due %>
-  <%= plan.project_status %>
+  <%= plan.project.due_at %>
+  <%= plan.project.status %>
   ==========================
 <% end %>

@@ -3,7 +3,7 @@ require 'test_helper'
 class PlansControllerTest < ActionDispatch::IntegrationTest
 
   setup do
-    @plan = plans(:one)
+    @plan = create(:plan)
   end
 
   test "should get index" do
@@ -17,7 +17,12 @@ class PlansControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create plan" do
-    plan_attributes = @plan.attributes
+    plan_attributes = {
+      team_id: create(:team).id,
+      project_id: create(:project).id,
+      week: Date.today.beginning_of_week
+    }
+
     assert_difference('Plan.count') do
       post plans_url, params: { plan: plan_attributes }
     end

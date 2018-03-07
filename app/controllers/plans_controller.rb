@@ -17,6 +17,6 @@ class PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:team, :project, :project_due, :project_status, :week)
+    params.require(:plan).permit(:team, :project_id, :week)
   end
 end

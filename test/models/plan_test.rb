@@ -18,8 +18,11 @@ class PlanTest < ActiveSupport::TestCase
   end
 
   test "#current_plan" do
+    plan_a = create(:plan)
+    plan_b = create(:plan)
+
     assert_equal(2, Plan.current_plan.length)
-    expected_results = [plans(:one), plans(:two)]
+    expected_results = [plan_a, plan_b]
     assert_equal(expected_results.to_ary.sort, Plan.current_plan.to_ary.sort)
   end
 end

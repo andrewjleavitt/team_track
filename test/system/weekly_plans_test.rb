@@ -2,19 +2,27 @@ require "application_system_test_case"
 
 class WeeklyPlansTest < ApplicationSystemTestCase
   setup do
+    team_a = create(:team, name: "Team A")
+    team_b = create(:team, name: "Team B")
+    team_c = create(:team, name: "Team C")
+    project_a = create(:project, status: "Green")
+    project_c = create(:project, name: "Project Z")
+    @plan_a = create(:plan, team: team_a.name, project: project_a, week: Date.today.beginning_of_week)
+    @plan_b = create(:plan, team: team_b.name, week: Date.today.beginning_of_week)
+    plan_c = create(:plan, team: team_c.name, week: Date.today.beginning_of_week + 1.week)
   end
 
   test "visiting the current week" do
     visit weekly_plans_url
 
     assert_selector "h1", text: "Weekly Plan"
-    assert_text "A-Team"
-    assert_text "Project X"
-    assert_text Date.today + 1.week
+    assert_text "Team A"
+    assert_text @plan_a.project.name
+    assert_text Date.today.beginning_of_week
     assert_text "Green"
-    assert_text "B-Team"
-    assert_text "Project Y"
-    assert_text Date.today + 2.week
+    assert_text "Team B"
+    assert_text @plan_b.project.name
+    assert_text Date.today.beginning_of_week + 1.week
     assert_text "Yellow"
     refute_text "Project Z"
   end
