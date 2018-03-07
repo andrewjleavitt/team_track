@@ -21,4 +21,26 @@ class ProjectsTest < ApplicationSystemTestCase
     assert_text "Created Doomsday Project"
     assert_selector "li.project", text: "Doomsday Project"
   end
+
+  test "viewing project details" do
+    project = create(:project, name: "Take Over the World")
+    visit projects_url
+    click_on project.name
+    assert_selector "h1", text: "Take Over the World"
+  end
+
+  test "setting a project due date" do
+    project = create(:project, name: "Take Over the World")
+    project_due_date = Date.today + 1.month
+
+    visit projects_url
+
+    click_on project.name
+    click_on "Edit"
+    fill_in "project[due_at]", with: project_due_date
+    click_on "Save"
+
+    assert_text project_due_date
+  end
+
 end

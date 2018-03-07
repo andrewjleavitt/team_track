@@ -21,4 +21,22 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_match("Created #{project_attributes[:name]}", flash[:notice])
     assert_redirected_to projects_path
   end
+
+  test "should get show" do
+    project = create(:project)
+    get project_url project
+    assert_response :success
+  end
+
+  test "should get edit" do
+    project = create(:project)
+    get edit_project_url project
+    assert_response :success
+  end
+
+  test "should update project" do
+    project = create(:project)
+    patch project_url(project), params: { project: { name: 'Updated Project Name' } }
+    assert_redirected_to project_url(project)
+  end
 end

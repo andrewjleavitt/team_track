@@ -1,7 +1,3 @@
 <h1>New Project</h1>
 
-<%= form_with model: @project do |f| %>
-  <%= label_tag :name %>
-  <%= f.text_field :name %>
-  <%= f.submit "Save" %>
-<% end %>
+<%= render "form" %>

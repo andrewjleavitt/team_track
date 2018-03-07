@@ -4,6 +4,6 @@
 
 <ul>
   <% @projects.each do |project| %>
-    <li class="project"><%= project.name %></li>
+    <li class="project"><%= link_to project.name, project %></li>
   <% end %>
 </ul>

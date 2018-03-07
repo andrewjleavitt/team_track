@@ -1,0 +1,7 @@
+<%= form_with model: @project do |f| %>
+  <%= label_tag :name %>
+  <%= f.text_field :name %>
+  <%= label_tag "Due Date" %>
+  <%= f.text_field :due_at %>
+  <%= f.submit "Save" %>
+<% end %>
