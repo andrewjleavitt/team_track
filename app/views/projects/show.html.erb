@@ -1,4 +1,4 @@
 <h1><%= @project.name %></h1>
-<div>Project Due</div>
-<div><%= @project.due_at %></div>
+<p>Project Due: <%= @project.due_at %></p>
+<p>Project Status: <%= @project.status %></p>
 <%= link_to "Edit", edit_project_path %>

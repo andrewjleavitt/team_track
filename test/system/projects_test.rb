@@ -38,9 +38,11 @@ class ProjectsTest < ApplicationSystemTestCase
     click_on project.name
     click_on "Edit"
     fill_in "project[due_at]", with: project_due_date
+    select "Yellow", from: project[status]
     click_on "Save"
 
     assert_text project_due_date
+    assert_text "Yellow"
   end
 
 end

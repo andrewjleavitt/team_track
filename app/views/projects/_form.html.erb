@@ -3,5 +3,7 @@
   <%= f.text_field :name %>
   <%= label_tag "Due Date" %>
   <%= f.text_field :due_at %>
+  <%= label_tag "Status" %>
+  <%= f.select :status, options_for_select(Project.status_options, @project.status), include_blank: true %>
   <%= f.submit "Save" %>
 <% end %>
