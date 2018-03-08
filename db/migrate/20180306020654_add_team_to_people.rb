@@ -1,4 +1,4 @@
-class AddTeamToMember < ActiveRecord::Migration[5.1]
+class AddTeamToPeople < ActiveRecord::Migration[5.1]
   def change
     add_reference :people, :team, foreign_key: true
     Person.all.each do |person|
