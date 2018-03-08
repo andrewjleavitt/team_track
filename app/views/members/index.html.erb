@@ -1,8 +1,0 @@
-<h1>Members</h1>
-<%= link_to "New Member", new_member_url %>
-
-<ul>
-  <% @members.each do |member| %>
-    <li><%= link_to member.name, member %> <%= member.current_team.name %></li>
-  <% end %>
-</ul>

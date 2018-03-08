@@ -15,7 +15,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-    @members = @team.members
+    @people = @team.people
   end
 
   private

@@ -28,7 +28,7 @@ class TeamsTest < ApplicationSystemTestCase
 
   test "viewing team details shows members on a team" do
     team = create(:team, name: "Super-Squad!")
-    member = create(:member, team: team)
+    person = create(:person, team: team)
 
     visit teams_url
     click_on team.name
@@ -36,7 +36,7 @@ class TeamsTest < ApplicationSystemTestCase
     assert_selector "h1", text: team.name
     assert_selector "h2", text: "Team Membership"
 
-    assert_selector "li.team-member", text: member.name
+    assert_selector "li.team-member", text: person.name
   end
 
 end

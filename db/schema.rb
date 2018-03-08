@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307165704) do
+ActiveRecord::Schema.define(version: 20180308174705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "members", force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "team_id"
-    t.index ["team_id"], name: "index_members_on_team_id"
+    t.index ["team_id"], name: "index_people_on_team_id"
   end
 
   create_table "plans", force: :cascade do |t|
@@ -50,6 +50,6 @@ ActiveRecord::Schema.define(version: 20180307165704) do
     t.string "test", limit: 255
   end
 
-  add_foreign_key "members", "teams"
+  add_foreign_key "people", "teams"
   add_foreign_key "plans", "projects"
 end

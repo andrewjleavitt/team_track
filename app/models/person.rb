@@ -1,4 +1,4 @@
-class Member < ApplicationRecord
+class Person < ApplicationRecord
   belongs_to :team, optional: true
 
   def current_team

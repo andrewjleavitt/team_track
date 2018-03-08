@@ -1,0 +1,8 @@
+<h1>People</h1>
+<%= link_to "New Person", new_person_url %>
+
+<ul>
+  <% @people.each do |person| %>
+    <li><%= link_to person.name, person %> <%= person.current_team.name %></li>
+  <% end %>
+</ul>
