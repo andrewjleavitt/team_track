@@ -2,7 +2,7 @@
 
 <%= form_with model: Plan.new do |f| %>
   <%= label_tag :team %>
-  <%= f.collection_select(:team, @teams, :name, :name) %>
+  <%= f.collection_select(:team_id, @teams, :id, :name) %>
 
   <%= label_tag :project%>
   <%= f.collection_select(:project_id, @projects, :id, :name) %>

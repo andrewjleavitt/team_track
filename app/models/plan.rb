@@ -1,5 +1,6 @@
 class Plan < ApplicationRecord
   belongs_to :project
+  belongs_to :team
 
   scope :current_plan, -> { where(week: Date.today.beginning_of_week)}
 

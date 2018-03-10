@@ -7,9 +7,9 @@ class WeeklyPlansTest < ApplicationSystemTestCase
     team_c = create(:team, name: "Team C")
     project_a = create(:project, status: "Green")
     project_c = create(:project, name: "Project Z")
-    @plan_a = create(:plan, team: team_a.name, project: project_a, week: Date.today.beginning_of_week)
-    @plan_b = create(:plan, team: team_b.name, week: Date.today.beginning_of_week)
-    plan_c = create(:plan, team: team_c.name, week: Date.today.beginning_of_week + 1.week)
+    @plan_a = create(:plan, team: team_a, project: project_a, week: Date.today.beginning_of_week)
+    @plan_b = create(:plan, team: team_b, week: Date.today.beginning_of_week)
+    plan_c = create(:plan, team: team_c, week: Date.today.beginning_of_week + 1.week)
   end
 
   test "visiting the current week" do

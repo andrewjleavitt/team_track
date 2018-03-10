@@ -4,7 +4,9 @@
 <p>Here are the plans:</p>
 
 <%= @plans.each do |plan| %>
-  <h3><%= plan.team %></h3>
+  <h3><%= plan.team.name %></h3>
+  <p>
+    Members: <%= plan.team.people.map(&:name).join(', ') %> </p>
   <ul>
     <li><%= plan.project.name %></li>
     <li><%= plan.project.due_at %></li>

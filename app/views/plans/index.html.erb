@@ -4,7 +4,7 @@
 </div>
 <% @plans.each do |plan| %>
   <div class="plan-card">
-    <span><strong><%= plan.team %></strong></span>
+    <span><strong><%= plan.team.name %></strong></span>
     <div>
       <span><%= plan.project.name %></span> <br>
       <span><%= plan.project.due_at %></span> <br>

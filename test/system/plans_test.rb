@@ -9,9 +9,9 @@ class PlansTest < ApplicationSystemTestCase
     project_b = create(:project, name: "Project Y", status: "Yellow", due_at: Date.today.beginning_of_week + 2.weeks)
     project_c = create(:project, name: "Project Z", status: "Red", due_at: Date.today.beginning_of_week + 1.month)
 
-    create(:plan, team: team_a.name, project: project_a, week: Date.today.beginning_of_week)
-    create(:plan, team: team_b.name, project: project_b, week: Date.today.beginning_of_week)
-    create(:plan, team: team_c.name, project: project_c, week: Date.today.beginning_of_week + 1.week)
+    create(:plan, team: team_a, project: project_a, week: Date.today.beginning_of_week)
+    create(:plan, team: team_b, project: project_b, week: Date.today.beginning_of_week)
+    create(:plan, team: team_c, project: project_c, week: Date.today.beginning_of_week + 1.week)
   end
 
   test "visiting the index" do
@@ -40,13 +40,13 @@ class PlansTest < ApplicationSystemTestCase
   test "creating a plan" do
     due_date = Date.today + 1.month
     week = Date.today.beginning_of_week
-    team = create(:team)
+    team = create(:team, name: 'Thunder Cats!')
     project = create(:project, due_at: due_date)
 
     visit plans_url
 
     click_on "New Plan"
-    select team.name, from: "plan[team]"
+    select team.name, from: "plan[team_id]"
     select project.name, from: "plan[project_id]"
     select week, from: "plan[week]"
     click_on "Save"

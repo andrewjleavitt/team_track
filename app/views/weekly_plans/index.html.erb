@@ -3,7 +3,7 @@
 <h2>Plan for <%= Date.today.beginning_of_week %></h2>
 
 <% @plans.each do |plan| %>
-  <h3><%= plan.team %></h3>
+  <h3><%= plan.team.name %></h3>
   <ul>
     <li><%= plan.project.name %></li>
     <li><%= plan.project.status %></li>
