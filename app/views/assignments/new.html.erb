@@ -1,0 +1,9 @@
+<h1>New Assignment</h1>
+
+<%= form_with model: @assignment do |f| %>
+  <%= label_tag :person %>
+  <%= f.collection_select(:person_id, @people, :id, :name) %>
+  <%= label_tag :team %>
+  <%= f.collection_select(:team_id, @teams, :id, :name) %>
+  <%= f.submit "Save" %>
+<% end %>

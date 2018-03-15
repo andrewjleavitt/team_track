@@ -1,0 +1,8 @@
+<h1>Assignments#index</h1>
+<%= link_to "New Assignment", new_assignment_path %>
+
+<ul>
+  <% @assignments.each do |assignment| %>
+  <li class="assignment"><%=assignment.person.name%>, <%=assignment.team.name%></li>
+  <% end %>
+</ul>
