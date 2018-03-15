@@ -31,7 +31,7 @@ class PeopleController < ApplicationController
   private
 
   def people_params
-    params.require(:person).permit(:name, :team_id)
+    params.require(:person).permit(:name,)
   end
 
 end

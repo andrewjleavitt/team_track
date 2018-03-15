@@ -19,10 +19,8 @@ class PeopleTest < ApplicationSystemTestCase
     visit people_url
     click_on "New Person"
     fill_in "Name", with: @person.name
-    select @team.name, from: "person[team_id]"
     click_on "Save"
     assert_text @person.name
-    assert_text @team.name
   end
 
   test "editing a person" do
@@ -30,9 +28,7 @@ class PeopleTest < ApplicationSystemTestCase
     click_on @person.name
     click_on "Edit"
     fill_in "Name", with: "Ben Kenobi"
-    select @team.name, from: "person[team_id]"
     click_on "Save"
     assert_text "Ben Kenobi"
-    assert_text @team.name
   end
 end
