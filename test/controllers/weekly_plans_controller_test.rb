@@ -8,10 +8,9 @@ class WeeklyPlansControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "create should send an email" do
-    team_a = create(:team, name: "Team A").tap do |t|
-      create(:person, team: t, name: 'Jim')
-      create(:person, team: t, name: 'Fred')
-    end
+    team_a = create(:team, name: "Team A")
+    create(:assignment, team: team_a, person: create(:person, name: 'Jim'))
+    create(:assignment, team: team_a, person: create(:person, name: 'Fred'))
     team_b = create(:team, name: "Team B")
     team_c = create(:team, name: "Team C")
     project_a = create(:project, name: "Project A", status: "Green", due_at: Date.today.beginning_of_week + 1.week )

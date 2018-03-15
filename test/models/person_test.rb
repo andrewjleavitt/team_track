@@ -1,11 +1,12 @@
 require 'test_helper'
 
-class PeopleTest < ActiveSupport::TestCase
+class PersonTest < ActiveSupport::TestCase
   test "#current_team returns the current team when team is set" do
     team = create(:team)
     person = create(:person, team_id: team.id)
+    assignment = create(:assignment, team: team, person: person)
 
-    assert_equal(team, person.current_team)
+    assert_equal([assignment], person.current_assignments)
   end
 
   test "can create without team" do

@@ -5,6 +5,7 @@ class PeopleTest < ApplicationSystemTestCase
   setup do
     @team = create(:team)
     @person = create(:person, name: "Gentleman Steve")
+    assignment = create(:assignment, team: @team, person: @person)
   end
 
   test "visiting the index" do

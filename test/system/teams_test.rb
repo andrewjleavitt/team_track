@@ -28,7 +28,8 @@ class TeamsTest < ApplicationSystemTestCase
 
   test "viewing team details shows members on a team" do
     team = create(:team, name: "Super-Squad!")
-    person = create(:person, team: team)
+    person = create(:person)
+    assignment = create(:assignment, team: team, person: person)
 
     visit teams_url
     click_on team.name

@@ -1,13 +1,8 @@
 class Person < ApplicationRecord
-  belongs_to :team, optional: true
+  has_many :assignments
+  has_many :teams, through: :assignments
 
-  def current_team
-    self.team.present? ? self.team : NoTeamAssigned.new
-  end
-
-  class NoTeamAssigned
-    def name
-      "No Team Assigned"
-    end
+  def current_assignments
+    self.assignments
   end
 end
