@@ -26,7 +26,7 @@ class TeamsTest < ApplicationSystemTestCase
     assert_selector "li.team", text: "The Scuba Squad"
   end
 
-  test "viewing team details shows members on a team" do
+  test "viewing team details shows members who are assigned to a team" do
     team = create(:team, name: "Super-Squad!")
     person = create(:person)
     assignment = create(:assignment, team: team, person: person)

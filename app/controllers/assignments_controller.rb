@@ -19,6 +19,6 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.require(:assignment).permit(:team_id, :person_id)
+    params.require(:assignment).permit(:team_id, :person_id, :effective_date)
   end
 end
