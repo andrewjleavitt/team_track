@@ -7,6 +7,7 @@ class AssignmentsController < ApplicationController
     @people = Person.all
     @teams = Team.all
     @assignment = Assignment.new
+    @weeks = Weeks.weeks
   end
 
   def create
