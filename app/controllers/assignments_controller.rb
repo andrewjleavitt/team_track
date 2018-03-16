@@ -16,9 +16,23 @@ class AssignmentsController < ApplicationController
     redirect_to assignments_url
   end
 
+  def edit
+    @assignment = Assignment.find(params[:id])
+    @people = Person.all
+    @teams = Team.all
+    @weeks = Weeks.weeks
+  end
+
+  def update
+    assignment = Assignment.find(params[:id])
+    assignment.update(assignment_params)
+
+    redirect_to assignments_url
+  end
+
   private
 
   def assignment_params
-    params.require(:assignment).permit(:team_id, :person_id, :effective_date)
+    params.require(:assignment).permit(:team_id, :person_id, :effective_date, :completion_date)
   end
 end

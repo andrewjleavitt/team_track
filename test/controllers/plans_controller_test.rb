@@ -2,10 +2,6 @@ require 'test_helper'
 
 class PlansControllerTest < ActionDispatch::IntegrationTest
 
-  setup do
-    @plan = create(:plan)
-  end
-
   test "should get index" do
     get plans_url
     assert_response :success

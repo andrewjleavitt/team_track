@@ -23,4 +23,17 @@ class AssignmentsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to assignments_url
   end
+
+  test "should get edit" do
+    assignment = create(:assignment, team: create(:team), person: create(:person), completion_date: nil)
+
+    get edit_assignment_url assignment
+    assert_response :success
+  end
+
+  test "should update an assignment" do
+    assignment = create(:assignment, team: create(:team), person: create(:person))
+    patch assignment_url(assignment), params: {assignment: {completion_date: Date.today}}
+    assert_redirected_to(assignments_url)
+  end
 end

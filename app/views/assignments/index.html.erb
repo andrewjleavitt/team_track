@@ -6,7 +6,9 @@
     <li class="assignment">
       <%= assignment.person.name %>,
       <%= assignment.team.name %>,
-      <%= assignment.effective_date %>
+      <%= assignment.effective_date %>,
+      <%= assignment.completion_date %>
+      <%= link_to "Edit", edit_assignment_url(assignment) %>
     </li>
   <% end %>
 </ul>

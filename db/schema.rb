@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180315190821) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "effective_date"
+    t.date "completion_date"
     t.index ["person_id"], name: "index_assignments_on_person_id"
     t.index ["team_id"], name: "index_assignments_on_team_id"
   end
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180315190821) do
   end
 
   create_table "plans", force: :cascade do |t|
+    t.string "team"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "week"

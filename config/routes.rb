@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   resources :weekly_plans, only: [:index, :create]
   resources :teams, only: [:index, :new, :create, :show]
   resources :projects, except: :destroy
-  resources :assignments, only: [:index, :new, :create]
+  resources :assignments, only: [:index, :new, :create, :edit, :update]
 end

@@ -1,0 +1,12 @@
+<%= form_with model: @assignment do |f| %>
+  <%= label_tag :person %>
+  <%= f.collection_select(:person_id, @people, :id, :name) %>
+  <%= label_tag :team %>
+  <%= f.collection_select(:team_id, @teams, :id, :name) %>
+  <%= label_tag :effective_date %>
+  <%= f.select :effective_date, @weeks %>
+  <%= label_tag :completion_date %>
+  <%= f.select :completion_date, @weeks %>
+
+  <%= f.submit "Save" %>
+<% end %>
