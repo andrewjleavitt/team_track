@@ -30,6 +30,14 @@ class AssignmentTest < ActiveSupport::TestCase
       completion_date: Date.today.beginning_of_week + 2.week
     )
 
-    assert_equal([expected_assignment], Assignment.active_assignment_for(assigned_person))
+    other_expected_assignment = create(
+      :assignment,
+      team: team,
+      person: assigned_person,
+      effective_date: Date.today.beginning_of_week - 1.weeks,
+      completion_date: nil
+    )
+
+    assert_equal([expected_assignment, other_expected_assignment], Assignment.active_assignment_for(assigned_person))
   end
 end

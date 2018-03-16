@@ -4,9 +4,9 @@
   <%= label_tag :team %>
   <%= f.collection_select(:team_id, @teams, :id, :name) %>
   <%= label_tag :effective_date %>
-  <%= f.select :effective_date, @weeks %>
+  <%= f.select :effective_date, @weeks, include_blank: true %>
   <%= label_tag :completion_date %>
-  <%= f.select :completion_date, @weeks %>
+  <%= f.select :completion_date, @weeks, include_blank: true %>
 
   <%= f.submit "Save" %>
 <% end %>
