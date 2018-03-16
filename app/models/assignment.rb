@@ -4,8 +4,6 @@ class Assignment < ApplicationRecord
 
 
   def self.active_assignment_for person
-    self.where("person_id=?", person.id)
-      .where("effective_date < ?", Date.today)
-      .where("completion_date is null or completion_date > ?", Date.today)
+    self.where("person_id=? and ? between effective_date and coalesce(completion_date, ?)", person.id, Date.today, 20_000.years.from_now)
   end
 end
