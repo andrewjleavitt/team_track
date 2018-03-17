@@ -1,4 +1,13 @@
-<h1>Person Detail</h1>
-<h2><%= @person.name %>  </h2>
-<p><%= person_assignments_list @person %></p>
+<h1><%= @person.name %></h1>
+
+<h3>Active Assignments</h3>
+<ul class="current-team-assignments">
+  <% Assignment.active_assignment_for_person(@person).each do |assignment| %>
+    <li class="assignment">
+      <h4>Team: <%= assignment.team.name %></h4>
+      Effective: <%= assignment.effective_date %><br>
+      Completion: <%= assignment.completion_date %>
+    </li>
+  <% end %>
+</ul>
 <%= link_to 'Edit', edit_person_path(@person) %>

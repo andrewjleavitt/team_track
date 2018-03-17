@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class AssignmentTest < ActiveSupport::TestCase
-  test "#active_assignments_for" do
+  test "#active_assignments_for_person" do
     assigned_person = create(:person)
     unassigned_person = create(:person)
     team = create(:team)
@@ -38,6 +38,6 @@ class AssignmentTest < ActiveSupport::TestCase
       completion_date: nil
     )
 
-    assert_equal([expected_assignment, other_expected_assignment], Assignment.active_assignment_for(assigned_person))
+    assert_equal([expected_assignment, other_expected_assignment], Assignment.active_assignment_for_person(assigned_person))
   end
 end

@@ -5,14 +5,23 @@ class PeopleTest < ApplicationSystemTestCase
   setup do
     @team = create(:team)
     @person = create(:person, name: "Gentleman Steve")
-    assignment = create(:assignment, team: @team, person: @person)
+    @assignment = create(:assignment, team: @team, person: @person, effective_date: Weeks.weeks.first, completion_date: Weeks.weeks.last)
   end
 
   test "visiting the index" do
     visit people_url
-
     assert_selector "h1", text: "People"
     assert_text "Gentleman Steve"
+  end
+
+  test "viewing a person" do
+    visit person_url @person
+
+    within ".current-team-assignments" do
+      assert_selector ".assignment", text: @team.name
+      assert_selector ".assignment", text: "Effective: #{@assignment.effective_date}"
+      assert_selector ".assignment", text: "Completion: #{@assignment.completion_date}"
+    end
   end
 
   test "creating a person" do
