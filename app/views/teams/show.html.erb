@@ -1,7 +1,7 @@
 <h1><%= @team.name %></h1>
 <h2>Team Membership</h2>
 <ul>
-  <% @people.each do |member| %>
-  <li class="team-member"><%= member.name %></li>
+  <% @team.active_assignments.each do |assignment| %>
+  <li class="team-member"><%= assignment.person.name %></li>
   <% end %>
 </ul>

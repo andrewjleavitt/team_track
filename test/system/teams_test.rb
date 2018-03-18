@@ -26,10 +26,10 @@ class TeamsTest < ApplicationSystemTestCase
     assert_selector "li.team", text: "The Scuba Squad"
   end
 
-  test "viewing team details shows members who are assigned to a team" do
+  test "viewing team details shows members who are currently assigned to a team" do
     team = create(:team, name: "Super-Squad!")
     person = create(:person)
-    assignment = create(:assignment, team: team, person: person)
+    assignment = create(:assignment, team: team, person: person, effective_date: Date.today - 1.day)
 
     visit teams_url
     click_on team.name
