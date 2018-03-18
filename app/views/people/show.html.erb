@@ -2,7 +2,7 @@
 
 <h3>Active Assignments</h3>
 <ul class="current-team-assignments">
-  <% Assignment.active_assignment_for_person(@person).each do |assignment| %>
+  <% @person.active_assignments.each do |assignment| %>
     <li class="assignment">
       <h4>Team: <%= assignment.team.name %></h4>
       Effective: <%= assignment.effective_date %><br>

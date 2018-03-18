@@ -9,9 +9,23 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test "#active_assignments" do
-    person = build(:person)
-    Assignment.stub :active_assignment_for_person, [:assignments] do
-      assert_equal [:assignments], person.active_assignments
-    end
+    person = create(:person)
+
+    active_assignment = create(
+        :assignment,
+        person: person,
+        team: create(:team),
+        effective_date: 1.day.ago,
+    )
+
+    inactive_assignment = create(
+        :assignment,
+        person: person,
+        team: create(:team),
+        effective_date: 1.day.from_now,
+    )
+
+    assert_includes person.active_assignments, active_assignment
+    refute_includes person.active_assignments, inactive_assignment
   end
 end
