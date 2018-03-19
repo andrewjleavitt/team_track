@@ -22,6 +22,7 @@ class AssignmentsController < ApplicationController
     @people = Person.all
     @teams = Team.all
     @weeks = Weeks.weeks
+    @roles = Role.roles
   end
 
   def update

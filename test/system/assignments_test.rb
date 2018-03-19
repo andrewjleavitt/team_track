@@ -26,7 +26,7 @@ class AssignmentsTest < ApplicationSystemTestCase
   test "completing an assignment" do
     completion_date = Date.today.beginning_of_week
     effective_date = Date.today.beginning_of_week - 1.week
-    assignment = create(:assignment, team: create(:team), person: create(:person), effective_date: effective_date, completion_date: nil)
+    assignment = create(:assignment, team: create(:team), person: create(:person), role: "Engineer", effective_date: effective_date, completion_date: nil)
 
     visit assignments_url
     within "li.assignment", text: assignment.person.name do
@@ -35,6 +35,6 @@ class AssignmentsTest < ApplicationSystemTestCase
     select completion_date, from: "assignment[completion_date]"
     click_on "Save"
 
-    assert_selector "li.assignment", text: "#{assignment.person.name}, #{assignment.team.name}, #{effective_date}, #{completion_date}"
+    assert_selector "li.assignment", text: "#{assignment.person.name}, Team: #{assignment.team.name}, Role: Engineer, #{effective_date}, #{completion_date}"
   end
 end
