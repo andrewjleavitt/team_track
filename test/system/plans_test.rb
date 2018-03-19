@@ -5,6 +5,8 @@ class PlansTest < ApplicationSystemTestCase
     team_a = create(:team, name: "Team A")
     team_b = create(:team, name: "Team B")
     team_c = create(:team, name: "Team C")
+    create(:assignment, team: team_a, person: create(:person, name: "Brandon"), role: "Team Lead", effective_date: Date.today.beginning_of_week)
+    create(:assignment, team: team_a, person: create(:person, name: "Natalie"), role: "Product Manager", effective_date: Date.today.beginning_of_week)
     project_a = create(:project, name: "Project X", status: "Green")
     project_b = create(:project, name: "Project Y", status: "Yellow", due_at: Date.today.beginning_of_week + 2.weeks)
     project_c = create(:project, name: "Project Z", status: "Red", due_at: Date.today.beginning_of_week + 1.month)
@@ -19,6 +21,8 @@ class PlansTest < ApplicationSystemTestCase
 
     assert_selector "h1", text: "Plans"
     assert_text "Team A"
+    assert_text "Team Lead: Brandon"
+    assert_text "Product Manager: Natalie"
     assert_text "Project X"
     assert_text Date.today.beginning_of_week + 1.week
     assert_text "Green"

@@ -4,13 +4,18 @@
 </div>
 <% @plans.each do |plan| %>
   <div class="plan-card">
-    <span><strong><%= plan.team.name %></strong></span>
-    <div>
-      <span><%= plan.project.name %></span> <br>
-      <span><%= plan.project.due_at %></span> <br>
-      <span><%= plan.project.status %></span> <br>
-      <span><%= plan.week %></span> <br>
-    </div>
-  </div><br>
+    <h3><%= plan.team.name %></h3>
+    <ul>
+      <% plan.team.active_assignments.each do |assignment| %>
+        <li>
+          <%= "#{assignment.role}:" unless assignment.role.nil? %> <%= "#{assignment.person.name}" %>
+        </li>
+      <% end %>
+    </ul>
+    <h4><%= plan.project.name %></h4>
+    <span><%= plan.project.due_at %></span> <br>
+    <span><%= plan.project.status %></span> <br>
+    <span><%= plan.week %></span> <br>
+  </div>
 <% end %>
 
