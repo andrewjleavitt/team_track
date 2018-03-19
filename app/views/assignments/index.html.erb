@@ -5,7 +5,8 @@
   <% @assignments.each do |assignment| %>
     <li class="assignment">
       <%= assignment.person.name %>,
-      <%= assignment.team.name %>,
+      Team: <%= assignment.team.name %>,
+      Role: <%= assignment.role %>,
       <%= assignment.effective_date %>,
       <%= assignment.completion_date %>
       <%= link_to "Edit", edit_assignment_url(assignment) %>

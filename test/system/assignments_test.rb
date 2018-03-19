@@ -16,10 +16,11 @@ class AssignmentsTest < ApplicationSystemTestCase
     click_on "New Assignment"
     select "Mr. T", from: "assignment[person_id]"
     select "A-Team", from: "assignment[team_id]"
+    select "Engineer", from: "assignment[role]"
     select effective_date, from: "assignment[effective_date]"
     click_on "Save"
     assert_selector ".notice", text: "Mr. T has been assigned to A-Team"
-    assert_selector "li.assignment", text: "Mr. T, A-Team, #{effective_date}"
+    assert_selector "li.assignment", text: "Mr. T, Team: A-Team, Role: Engineer, #{effective_date}"
   end
 
   test "completing an assignment" do
