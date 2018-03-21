@@ -2,13 +2,9 @@
 
 <h2>Plan for <%= Date.today.beginning_of_week %></h2>
 
+
 <% @plans.each do |plan| %>
-  <h3><%= plan.team.name %></h3>
-  <ul>
-    <li><%= plan.project.name %></li>
-    <li><%= plan.project.status %></li>
-    <li><%= plan.project.due_at %></li>
-  </ul>
+  <%= render "plans/plan", plan: plan %>
 <% end %>
 
 <%= button_to "Send the message", weekly_plans_url, data: {disable_with: "sending the message..."} %>

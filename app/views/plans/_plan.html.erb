@@ -1,0 +1,16 @@
+<li class="" plans>
+  <div class="plan-card">
+    <h3><%= plan.team.name %></h3>
+    <ul>
+      <% plan.team.active_assignments.each do |assignment| %>
+        <li>
+          <%= "#{assignment.role}:" unless assignment.role.nil? %> <%= "#{assignment.person.name}" %>
+        </li>
+      <% end %>
+    </ul>
+    <h4><%= plan.project.name %></h4>
+    <span><%= plan.project.due_at %></span> <br>
+    <span><%= plan.project.status %></span> <br>
+    <span><%= plan.week %></span> <br>
+  </div>
+</li>
