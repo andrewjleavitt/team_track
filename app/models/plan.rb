@@ -2,9 +2,6 @@ class Plan < ApplicationRecord
   belongs_to :project
   belongs_to :team
 
-  scope :current_plan, -> { where(week: Date.today.beginning_of_week)}
-
-  def self.weeks
-    (-2..4).map { |i| Date.today.beginning_of_week + i.weeks }
-  end
+  scope :current_plan, -> { for_week(Week.current) }
+  scope :for_week, -> (week) { where(week: week)}
 end

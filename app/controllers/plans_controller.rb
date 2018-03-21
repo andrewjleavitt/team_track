@@ -4,7 +4,7 @@ class PlansController < ApplicationController
   end
 
   def new
-    @weeks = Weeks.weeks
+    @weeks = Week.weeks
     @teams = Team.all
     @projects = Project.all
   end

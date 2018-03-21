@@ -1,6 +1,6 @@
 class WeeklyPlansController < ApplicationController
   def index
-    @plans = Plan.current_plan
+    @plans = Plan.for_week Week.current
   end
 
   def create

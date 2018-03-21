@@ -7,7 +7,7 @@ class AssignmentsController < ApplicationController
     @people = Person.all
     @teams = Team.all
     @assignment = Assignment.new
-    @weeks = Weeks.weeks
+    @weeks = Week.weeks
     @roles = Role.roles
   end
 
@@ -21,7 +21,7 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
     @people = Person.all
     @teams = Team.all
-    @weeks = Weeks.weeks
+    @weeks = Week.weeks
     @roles = Role.roles
   end
 

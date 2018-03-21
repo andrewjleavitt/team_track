@@ -5,7 +5,7 @@ class PeopleTest < ApplicationSystemTestCase
   setup do
     @team = create(:team)
     @person = create(:person, name: "Gentleman Steve")
-    @assignment = create(:assignment, team: @team, person: @person, effective_date: Weeks.weeks.first, completion_date: Weeks.weeks.last)
+    @assignment = create(:assignment, team: @team, person: @person, effective_date: Week.weeks.first, completion_date: Week.weeks.last)
   end
 
   test "visiting the index" do
