@@ -9,14 +9,14 @@ class TeamTest < ActiveSupport::TestCase
       :assignment,
       person: create(:person),
       team: team,
-      effective_date: 1.day.ago,
+      effective_date: 1.week.ago,
     )
 
     inactive_assignment = create(
       :assignment,
       person: create(:person),
       team: team,
-      effective_date: 1.day.from_now,
+      effective_date: 2.week.from_now,
     )
 
     assert_includes team.active_assignments, active_assignment

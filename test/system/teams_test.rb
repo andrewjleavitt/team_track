@@ -29,7 +29,7 @@ class TeamsTest < ApplicationSystemTestCase
   test "viewing team details shows members who are currently assigned to a team" do
     team = create(:team, name: "Super-Squad!")
     person = create(:person)
-    assignment = create(:assignment, team: team, person: person, effective_date: Date.today - 1.day)
+    assignment = create(:assignment, team: team, person: person, effective_date: 1.week.ago)
 
     visit teams_url
     click_on team.name

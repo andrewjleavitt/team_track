@@ -36,4 +36,9 @@ class WeeklyPlansControllerTest < ActionDispatch::IntegrationTest
     assert_match(/Project B/, send_message.html_part.body.to_s)
     assert_response :redirect
   end
+
+  test "should get show" do
+    get weekly_plans_url Week.weeks[0]
+    assert_response :success
+  end
 end

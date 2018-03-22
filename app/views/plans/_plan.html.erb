@@ -2,7 +2,7 @@
   <div class="plan-card">
     <h3><%= plan.team.name %></h3>
     <ul>
-      <% plan.team.active_assignments.each do |assignment| %>
+      <% plan.team.active_assignments(plan.week).each do |assignment| %>
         <li>
           <%= "#{assignment.role}:" unless assignment.role.nil? %> <%= "#{assignment.person.name}" %>
         </li>

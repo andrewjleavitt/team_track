@@ -27,6 +27,31 @@ class WeeklyPlansTest < ApplicationSystemTestCase
     refute_text "Project Z"
   end
 
+  test "visiting any week directly" do
+    create(:plan, project: create(:project, name: "Manhattan Project"), week: Week.weeks[5])
+    create(:plan, project: create(:project, name: "Project X"), week: Week.weeks[5])
+    create(:plan, project: create(:project, name: "Banbury Cross Donuts"), week: Week.weeks[4])
+    visit weekly_plan_url Week.weeks[5]
+    assert_text "Manhattan Project"
+    assert_text "Project X"
+  end
+
+  test "paging between weeks" do
+    create(:plan, project: create(:project, name: "Manhattan Project"), week: Week.current)
+    create(:plan, project: create(:project, name: "Project X"), week: Week.current + 1.week)
+
+    visit weekly_plans_path
+    assert_text "Manhattan Project"
+
+    click_on "Next"
+    assert_text "Project X"
+    refute_text "Manhattan Project"
+
+    click_on "Previous"
+    assert_text "Manhattan Project"
+    refute_text "Project X"
+  end
+
   test "emailing a weekly plan" do
     visit weekly_plans_url
     click_button "Send the message"

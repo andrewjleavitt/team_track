@@ -1,6 +1,16 @@
 class WeeklyPlansController < ApplicationController
   def index
-    @plans = Plan.for_week Week.current
+    week = Week.current
+    @plans = Plan.for_week week
+    @next_week = week + 1.week
+    @previous_week = week - 1.week
+  end
+
+  def show
+    @week = params[:id].to_date
+    @next_week = @week + 1.week
+    @previous_week = @week - 1.week
+    @plans = Plan.for_week @week
   end
 
   def create
