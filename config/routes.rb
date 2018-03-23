@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   get 'assignments/index'
 
   root "weekly_plans#index"
