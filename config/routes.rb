@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  
   get 'assignments/index'
-
   root "weekly_plans#index"
   get '/login' => 'login#index', as: :login
   resources :people, except: :destroy
