@@ -11,4 +11,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to login_path
     end
   end
+
+  private
+  
+  def skip_authentication?
+    true
+  end
 end

@@ -7,8 +7,12 @@ class ApplicationController < ActionController::Base
   def authenticate
     redirect_to login_path unless authenticated?
   end
-  
+
   def authenticated?
-    Authentication.authenticated?
+    skip_authentication? || Authentication.authenticated?(current_user)
+  end
+  
+  def skip_authentication?
+    false
   end
 end
