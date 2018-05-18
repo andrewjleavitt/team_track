@@ -2,7 +2,9 @@ require "application_system_test_case"
 
 class ProjectsTest < ApplicationSystemTestCase
   setup do
-    create(:project)
+    project = create(:project)
+    project.team = create(:team, name: "Captain Planet")
+    project.save
   end
 
   test "visiting the index" do
@@ -11,6 +13,7 @@ class ProjectsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Projects"
 
     assert_selector "li.project", text: "World Peace"
+    assert_selector "li.team", text: "Captain Planet"
   end
 
   test "creating a new project" do
