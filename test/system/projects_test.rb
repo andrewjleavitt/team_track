@@ -2,18 +2,23 @@ require "application_system_test_case"
 
 class ProjectsTest < ApplicationSystemTestCase
   setup do
-    project = create(:project)
-    project.team = create(:team, name: "Captain Planet")
-    project.save
+    team = create(:team, name: "Captain Planet")
+    project_attributes = {team: team, status: "Green", due_at: "2018-01-01"}
+    create(:project, project_attributes)
+    create(:project, name: "No Team Project", team: nil)
   end
 
   test "visiting the index" do
     visit projects_url
 
     assert_selector "h1", text: "Projects"
-
     assert_selector "li.project", text: "World Peace"
     assert_selector "li.team", text: "Captain Planet"
+    assert_selector "li.project-status", text: "Green"
+    assert_selector "li.project-due-at", text: "2018-01-01"
+
+    assert_selector "li.project", text: "No Team Project"
+    assert_selector "li.team", text: "Unassigned"
   end
 
   test "creating a new project" do
