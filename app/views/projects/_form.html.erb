@@ -1,6 +1,8 @@
 <%= form_with model: @project do |f| %>
   <%= label_tag :name %>
   <%= f.text_field :name %>
+  <%= label_tag :team %>
+  <%= f.collection_select(:team_id, @teams, :id, :name) %>
   <%= label_tag "Due Date" %>
   <%= f.text_field :due_at %>
   <%= label_tag "Status" %>

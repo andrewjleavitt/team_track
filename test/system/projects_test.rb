@@ -22,12 +22,15 @@ class ProjectsTest < ApplicationSystemTestCase
   end
 
   test "creating a new project" do
+    create(:team, name: "The B-Team")
     visit projects_url
     click_on "New Project"
     fill_in "project[name]", with: "Doomsday Project"
+    select "The B-Team", from: "project[team_id]"
     click_on "Save"
     assert_text "Created Doomsday Project"
     assert_selector "li.project", text: "Doomsday Project"
+    assert_selector "li.team", text: "The B-Team"
   end
 
   test "viewing project details" do
@@ -46,11 +49,9 @@ class ProjectsTest < ApplicationSystemTestCase
     click_on project.name
     click_on "Edit"
     fill_in "project[due_at]", with: project_due_date
-    select "Yellow", from: project[status]
     click_on "Save"
 
     assert_text project_due_date
-    assert_text "Yellow"
   end
 
 end

@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    all_teams
     @project = Project.new
   end
 
@@ -18,6 +19,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    all_teams
     @project = Project.find(params[:id])
   end
 
@@ -29,7 +31,11 @@ class ProjectsController < ApplicationController
 
   private
 
+  def all_teams
+    @teams = Team.all
+  end
+
   def project_params
-    params.require(:project).permit(:name, :due_at, :status)
+    params.require(:project).permit(:name, :due_at, :status, :team_id)
   end
 end
