@@ -5,3 +5,10 @@
   <li class="team-member"><%= assignment.person.name %></li>
   <% end %>
 </ul>
+
+<h2>Assigned Projects</h2>
+<ul>
+  <% @team.projects.each do |project| %>
+  <li class="project"><%= project.name %></li>
+  <% end %>|
+</ul>

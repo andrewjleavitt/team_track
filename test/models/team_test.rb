@@ -22,4 +22,11 @@ class TeamTest < ActiveSupport::TestCase
     assert_includes team.active_assignments, active_assignment
     refute_includes team.active_assignments, inactive_assignment
   end
+
+  test "#projects" do
+    team = build(:team)
+    project = create(:project, team: team)
+
+    assert_equal([project], team.projects)
+  end
 end

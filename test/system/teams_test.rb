@@ -40,4 +40,16 @@ class TeamsTest < ApplicationSystemTestCase
     assert_selector "li.team-member", text: person.name
   end
 
+  test "viewing team details show projectes assigned to the team" do
+    team = create(:team, name: "Super-Squad!")
+    project = create(:project, team: team)
+
+    visit team_url team
+
+    assert_selector "h1", text: team.name
+    assert_selector "h2", text: "Assigned Projects"
+
+    assert_selector "li.project", text: project.name
+  end
+
 end
