@@ -16,4 +16,5 @@
 
 ul.menu li {
   display: inline-block;
+  text-align: center;
 }
