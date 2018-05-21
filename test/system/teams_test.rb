@@ -50,7 +50,7 @@ class TeamsTest < ApplicationSystemTestCase
     assert_selector "h1", text: team.name
     assert_selector "h2", text: "Assigned Projects"
 
-    assert_selector "li.project", text: project.name
+    assert_selector "li.name", text: project.name
   end
 
 end

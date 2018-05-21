@@ -2,13 +2,13 @@
 <h2>Team Membership</h2>
 <ul>
   <% @team.active_assignments.each do |assignment| %>
-  <li class="team-member"><%= assignment.person.name %></li>
+    <li class="team-member"><%= assignment.person.name %></li>
   <% end %>
 </ul>
 
 <h2>Assigned Projects</h2>
-<ul>
+<ul class="project-list">
   <% @team.projects.each do |project| %>
-  <li class="project"><%= project.name %></li>
+    <%= render 'projects/project_list_item', project: project %>
   <% end %>
 </ul>
