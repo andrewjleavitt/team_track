@@ -2,12 +2,8 @@
 
 <%= link_to "New Project", new_project_path %>
 
-<% @projects.each do |project| %>
-  <h3><%= project.name %></h3>
-  <ul>
-    <li class="project"><%= link_to project.name, project %></li>
-    <li class="team"><%= project.team_name %></li>
-    <li class="project-status"><%= project.status %></li>
-    <li class="project-due-at"><%= project.due_at %></li>
-  </ul>
-<% end %>
+<ul class="project-list">
+  <% @projects.each do |project| %>
+    <%= render 'project_list_item', project: project %>
+  <% end %>
+</ul>

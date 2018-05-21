@@ -12,12 +12,12 @@ class ProjectsTest < ApplicationSystemTestCase
     visit projects_url
 
     assert_selector "h1", text: "Projects"
-    assert_selector "li.project", text: "World Peace"
+    assert_selector "li.name", text: "World Peace"
     assert_selector "li.team", text: "Captain Planet"
     assert_selector "li.project-status", text: "Green"
     assert_selector "li.project-due-at", text: "2018-01-01"
 
-    assert_selector "li.project", text: "No Team Project"
+    assert_selector "li.name", text: "No Team Project"
     assert_selector "li.team", text: "Unassigned"
   end
 
@@ -29,7 +29,7 @@ class ProjectsTest < ApplicationSystemTestCase
     select "The B-Team", from: "project[team_id]"
     click_on "Save"
     assert_text "Created Doomsday Project"
-    assert_selector "li.project", text: "Doomsday Project"
+    assert_selector "li.name", text: "Doomsday Project"
     assert_selector "li.team", text: "The B-Team"
   end
 
