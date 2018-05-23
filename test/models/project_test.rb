@@ -9,13 +9,6 @@ class ProjectTest < ActiveSupport::TestCase
     assert_not(build(:project, name: nil).valid?)
   end
 
-  test "#team" do
-    project = build(:project)
-    team = build(:team)
-    project.team = team
-    assert_equal(team, project.team)
-  end
-
   test "#team_name" do
     project = build(:project)
     team = build(:team)
@@ -26,7 +19,15 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal("Unassigned", project2.team_name)
   end
 
-  test "projects can be valide without a team assignment" do
+  test "#assign_to" do
+    project = create(:project)
+    team = create(:team)
+    project.assign_to team
+    project.reload
+    assert_equal(team, project.team)
+  end
+
+  test "projects can be valid without a team assignment" do
     project = build(:project)
     project.team = nil
     assert(project.valid?)

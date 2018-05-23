@@ -1,5 +1,6 @@
-<li class="plans">
-  <%= plan.team.name %> for <%= plan.week %>
+<li class="plan-list">
+  <h4 class="plan-label"><%= plan.team.name %> for <%= plan.week %></h4>
+  Team:
   <ul>
     <% plan.team.active_assignments(plan.week).each do |assignment| %>
       <li>
@@ -8,7 +9,9 @@
     <% end %>
   </ul>
   Projects:
-  <ul>
-    <%= render 'projects/project_list_item', project: plan.project %>
+  <ul class="project-list">
+    <% plan.team.projects.each do |project| %>
+      <%= render 'projects/project_list_item', project: project %>
+    <% end %>
   </ul>
 </li>

@@ -6,13 +6,19 @@ class WeeklyPlansTest < ApplicationSystemTestCase
     team_b = create(:team, name: "Team B")
     team_c = create(:team, name: "Team C")
     project_a = create(:project, status: "Green")
+    project_b = create(:project, status: "Yellow")
     project_c = create(:project, name: "Project Z")
-    @plan_a = create(:plan, team: team_a, project: project_a, week: Date.today.beginning_of_week)
+
+    project_a.assign_to team_a
+    project_b.assign_to team_b
+    project_c.assign_to team_c
+
+    @plan_a = create(:plan, team: team_a, week: Date.today.beginning_of_week)
     @plan_b = create(:plan, team: team_b, week: Date.today.beginning_of_week)
-    plan_c = create(:plan, team: team_c, week: Date.today.beginning_of_week + 1.week)
+    create(:plan, team: team_c, week: Date.today.beginning_of_week + 1.week)
   end
 
-  test "visiting the current week" do
+  test "visiting a weekly plan" do
     visit weekly_plans_url
 
     assert_selector "h1", text: "Weekly Plan"
@@ -28,17 +34,36 @@ class WeeklyPlansTest < ApplicationSystemTestCase
   end
 
   test "visiting any week directly" do
-    create(:plan, project: create(:project, name: "Manhattan Project"), week: Week.weeks[5])
-    create(:plan, project: create(:project, name: "Project X"), week: Week.weeks[5])
-    create(:plan, project: create(:project, name: "Banbury Cross Donuts"), week: Week.weeks[4])
+    team = create(:team)
+    manhattan_project = create(:project, name: "Manhattan Project")
+    project_x = create(:project, name: "Project X")
+    banbury_cross = create(:project, name: "Banbury Cross Donuts")
+
+    manhattan_project.assign_to team
+    project_x.assign_to team
+    banbury_cross.assign_to team
+
+    create(:plan, team: team, week: Week.weeks[5])
+    create(:plan, team: team, week: Week.weeks[5])
+    create(:plan, team: team, week: Week.weeks[4])
+
     visit weekly_plan_url Week.weeks[5]
     assert_text "Manhattan Project"
     assert_text "Project X"
   end
 
   test "paging between weeks" do
-    create(:plan, project: create(:project, name: "Manhattan Project"), week: Week.current)
-    create(:plan, project: create(:project, name: "Project X"), week: Week.current + 1.week)
+    skip "need to rethink how project start dates are defined"
+    team = create(:team)
+
+    manhattan_project = create(:project, name: "Manhattan Project")
+    project_x = create(:project, name: "Project X")
+
+    manhattan_project.assign_to team
+    project_x.assign_to team
+
+    plan_1 = create(:plan, team: team, week: Week.current)
+    plan_2 = create(:plan, team: team, week: Week.current + 1.week)
 
     visit weekly_plans_path
     assert_text "Manhattan Project"

@@ -1,7 +1,8 @@
 require "application_system_test_case"
 
 class PlansTest < ApplicationSystemTestCase
-  setup do
+
+  test "visiting the index" do
     team_a = create(:team, name: "Team A")
     team_b = create(:team, name: "Team B")
     team_c = create(:team, name: "Team C")
@@ -11,12 +12,14 @@ class PlansTest < ApplicationSystemTestCase
     project_b = create(:project, name: "Project Y", status: "Yellow", due_at: Date.today.beginning_of_week + 2.weeks)
     project_c = create(:project, name: "Project Z", status: "Red", due_at: Date.today.beginning_of_week + 1.month)
 
-    create(:plan, team: team_a, project: project_a, week: Date.today.beginning_of_week)
-    create(:plan, team: team_b, project: project_b, week: Date.today.beginning_of_week)
-    create(:plan, team: team_c, project: project_c, week: Date.today.beginning_of_week + 1.week)
-  end
+    project_a.assign_to team_a
+    project_b.assign_to team_b
+    project_c.assign_to team_c
 
-  test "visiting the index" do
+    create(:plan, team: team_a, week: Date.today.beginning_of_week)
+    create(:plan, team: team_b, week: Date.today.beginning_of_week)
+    create(:plan, team: team_c, week: Date.today.beginning_of_week + 1.week)
+
     visit plans_url
 
     assert_selector "h1", text: "Plans"
@@ -47,11 +50,11 @@ class PlansTest < ApplicationSystemTestCase
     team = create(:team, name: 'Thunder Cats!')
     project = create(:project, due_at: due_date)
 
+    project.assign_to team
     visit plans_url
 
     click_on "New Plan"
     select team.name, from: "plan[team_id]"
-    select project.name, from: "plan[project_id]"
     select week, from: "plan[week]"
     click_on "Save"
 
@@ -60,5 +63,16 @@ class PlansTest < ApplicationSystemTestCase
     assert_text due_date
     assert_text project.status
     assert_text week
+  end
+
+  test "plan view shows all projects for a team" do
+    team = create(:team, name: "Voltron")
+    create(:project, team: team)
+    create(:project, team: team)
+    create(:plan, team: team, week: Date.today.beginning_of_week)
+
+    visit weekly_plan_url Date.today.beginning_of_week
+    assert_selector ".plan-label", count: 1
+    assert_selector "li.project-list-item", count: 2
   end
 end
