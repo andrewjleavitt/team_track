@@ -54,4 +54,19 @@ class ProjectsTest < ApplicationSystemTestCase
     assert_text project_due_date
   end
 
+  test "setting a project start date" do
+    project = create(:project, name: "Take Over the World")
+    project_start_date = Date.today.beginning_of_week
+
+    visit projects_url
+
+    click_on project.name
+    click_on "Edit"
+    fill_in "project[start_at]", with: project_start_date
+    click_on "Save"
+
+    assert_text project_start_date
+  end
+
+
 end
