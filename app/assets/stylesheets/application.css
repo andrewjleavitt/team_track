@@ -18,3 +18,7 @@ ul.menu li {
   display: inline-block;
   text-align: center;
 }
+
+tbody tr:nth-child(odd) {
+  background-color: #ccc;
+}

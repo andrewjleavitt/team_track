@@ -1,21 +1,23 @@
 require 'test_helper'
 
 class PlanTest < ActiveSupport::TestCase
-  test "#current_plan" do
-    plan_a = create(:plan)
-    plan_b = create(:plan)
+  test "#initialze with a week" do
+    week = Week.current
 
-    assert_equal(2, Plan.current_plan.length)
-    expected_results = [plan_a, plan_b]
-    assert_equal(expected_results.to_ary.sort, Plan.current_plan.to_ary.sort)
+    plan = Plan.new(week)
+    assert_equal(week, plan.week)
   end
 
-  test "#for_week" do
-    plan_a = create(:plan, week: Week.weeks[0])
-    plan_b = create(:plan, week: Week.weeks[0])
-    plan_c = create(:plan, week: Week.weeks[1])
+  test "#projects_for_week" do
+    team = create(:team)
+    create(:project, team: team, start_at: nil)
+    create(:project, team: team, start_at: Week.current)
+    create(:project, team: team, start_at: Week.current + 1.week)
 
-    plans = Plan.for_week(Week.weeks[0])
-    assert_equal([plan_a, plan_b], plans)
+    projects = Plan.new(Week.current).projects_for_week
+    next_week_projects = Plan.new(Week.current + 1.week).projects_for_week
+
+    assert_equal(1, projects.count)
+    assert_equal(2, next_week_projects.count)
   end
 end

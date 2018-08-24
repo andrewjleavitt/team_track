@@ -2,12 +2,12 @@ The Plan for the Week!
 ======================
 
 Hello Friendly Mavens!
-Here are the plans:
+Here is the plan for the week!
 
-<%= @plans.each do |plan| %>
-  <%= plan.team %>
-  <%= plan.project %>
-  <%= plan.project.due_at %>
-  <%= plan.project.status %>
+<%= @plan.projects_for_week.each do |project| %>
+  <%= project.team %>
+  <%= project.name %>
+  <%= project.due_at %>
+  <%= project.status %>
   ==========================
 <% end %>

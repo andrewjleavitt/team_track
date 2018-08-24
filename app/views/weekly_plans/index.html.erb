@@ -1,12 +1,11 @@
 <h1>Weekly Plans</h1>
 
-<h2>Plan for <%= Date.today.beginning_of_week %></h2>
+<h2>Plan for <%= @plan.week %></h2>
 <%= link_to "Previous", weekly_plan_url(@previous_week) %>
 <%= link_to "Next", weekly_plan_url(@next_week) %>
 
-<% @plans.each do |plan| %>
-  <%= render "plans/plan", plan: plan %>
-<% end %>
+
+<%= render "plans/plan", plan: @plan %>
 
 <%= button_to "Send the message", weekly_plans_url, data: {disable_with: "sending the message..."} %>
 

@@ -29,4 +29,8 @@ class TeamTest < ActiveSupport::TestCase
 
     assert_equal([project], team.projects)
   end
+
+  test "#project_list" do
+    
+  end
 end

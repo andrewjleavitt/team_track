@@ -1,17 +1,2 @@
-<li class="plan-list">
-  <h4 class="plan-label"><%= plan.team.name %> for <%= plan.week %></h4>
-  Team:
-  <ul>
-    <% plan.team.active_assignments(plan.week).each do |assignment| %>
-      <li>
-        <%= "#{assignment.role}:" unless assignment.role.nil? %> <%= "#{assignment.person.name}" %>
-      </li>
-    <% end %>
-  </ul>
-  Projects:
-  <ul class="project-list">
-    <% plan.team.projects.each do |project| %>
-      <%= render 'projects/project_list_item', project: project %>
-    <% end %>
-  </ul>
-</li>
+
+<%= render 'projects/project_list_item', projects: plan.projects_for_week %>

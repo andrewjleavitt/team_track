@@ -2,8 +2,7 @@
 
 <%= link_to "New Project", new_project_path %>
 
-<ul class="project-list">
-  <% @projects.each do |project| %>
-    <%= render 'project_list_item', project: project %>
-  <% end %>
-</ul>
+
+<%= render 'project_list_item', projects: @projects %>
+
+

@@ -27,9 +27,34 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal(team, project.team)
   end
 
+  test "#start" do
+    project = build(:project)
+    project.start(Week.current)
+
+    other_project = build(:project)
+    other_project.start
+
+    assert_equal(project.start_at, Week.current)
+    assert_equal(other_project.start_at, Week.current)
+  end
+
   test "projects can be valid without a team assignment" do
     project = build(:project)
     project.team = nil
     assert(project.valid?)
+  end
+
+
+  test "#projects_for_week" do
+    team = create(:team)
+    create(:project, team: team, start_at: nil)
+    create(:project, team: team, start_at: Week.current)
+    create(:project, team: team, start_at: Week.current + 1.week)
+
+    projects = Plan.new(Week.current).projects_for_week
+    next_week_projects = Plan.new(Week.current + 1.week).projects_for_week
+
+    assert_equal(1, projects.count)
+    assert_equal(2, next_week_projects.count)
   end
 end

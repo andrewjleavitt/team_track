@@ -15,10 +15,16 @@ class WeeklyPlansControllerTest < ActionDispatch::IntegrationTest
     team_c = create(:team, name: "Team C")
     project_a = create(:project, name: "Project A", status: "Green", due_at: Date.today.beginning_of_week + 1.week )
     project_b = create(:project, name: "Project B", status: "Red", due_at: Date.today.beginning_of_week + 1.week )
-    project_c = create(:project, name: "Project A", status: "Yellow", due_at: Date.today.beginning_of_week + 1.week )
-    plan_a = create(:plan, team: team_a, project: project_a, week: Date.today.beginning_of_week)
-    plan_b = create(:plan, team: team_b, project: project_b, week: Date.today.beginning_of_week)
-    plan_c = create(:plan, team: team_c, project: project_c, week: Date.today.beginning_of_week + 1.week)
+    project_c = create(:project, name: "Project c", status: "Yellow", due_at: Date.today.beginning_of_week + 1.week )
+
+    project_a.assign_to team_a
+    project_a.start
+
+    project_b.assign_to team_b
+    project_b.start
+
+    project_c.assign_to team_c
+    project_c.start
 
     assert_difference 'ActionMailer::Base.deliveries.size', +1 do
       post weekly_plans_url

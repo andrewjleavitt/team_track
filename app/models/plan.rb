@@ -1,7 +1,14 @@
-class Plan < ApplicationRecord
-  belongs_to :project
-  belongs_to :team
+class Plan
+  def initialize(week=Week.current)
+    @week = week
+  end
 
-  scope :for_week, -> (week) { where(week: week)}
-  scope :current_plan, -> { for_week(Week.current) }
+  def projects_for_week
+    Project.for_week week
+  end
+
+  def week
+    @week
+  end
+
 end
