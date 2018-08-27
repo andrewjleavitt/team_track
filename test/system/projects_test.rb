@@ -22,7 +22,7 @@ class ProjectsTest < ApplicationSystemTestCase
   end
 
   test "creating a new project" do
-    create(:team, name: "The B-Team")
+    team = create(:team, name: "The B-Team")
     visit projects_url
     click_on "New Project"
     fill_in "project[name]", with: "Doomsday Project"
@@ -31,6 +31,7 @@ class ProjectsTest < ApplicationSystemTestCase
     assert_text "Created Doomsday Project"
     assert_selector ".project-name", text: "Doomsday Project"
     assert_selector ".project-team", text: "The B-Team"
+    assert_link "a", text: team.name, href: team_path(team)
   end
 
   test "viewing project details" do

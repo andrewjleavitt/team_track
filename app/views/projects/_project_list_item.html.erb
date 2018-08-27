@@ -13,7 +13,7 @@
   <% projects.each do |project| %>
     <tr class="project-list-item">
       <td class="project-name"><%= link_to project.name, project %></td>
-      <td class="project-team"><%= project.team_name %></td>
+      <td class="project-team"><%= link_to project.team_name, project.team %></td>
       <td class="project-status"><%= project.status %></td>
       <td class="project-start-at"><%= project.start_at %></td>
       <td class="project-due-at"><%= project.due_at %></td>
