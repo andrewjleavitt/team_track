@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :team do
-    name "Thunder Cats!"
+    name { "Thunder Cats!" }
   end
 end
