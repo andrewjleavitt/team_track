@@ -7,6 +7,8 @@
   <%= f.text_field :start_at %>
   <%= label_tag "Due Date" %>
   <%= f.text_field :due_at %>
+  <%= label_tag "Completed Date" %>
+  <%= f.text_field :complete_at %>
   <%= label_tag "Status" %>
   <%= f.select :status, options_for_select(Project.status_options, @project.status), include_blank: true %>
   <%= f.submit "Save" %>

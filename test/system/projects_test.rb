@@ -3,7 +3,7 @@ require "application_system_test_case"
 class ProjectsTest < ApplicationSystemTestCase
   setup do
     team = create(:team, name: "Captain Planet")
-    project_attributes = {team: team, status: "Green", due_at: "2018-01-01"}
+    project_attributes = {team: team, status: "Green", due_at: "2018-01-01", complete_at: "2018-01-08"}
     create(:project, project_attributes)
     create(:project, name: "No Team Project", team: nil)
   end
@@ -16,6 +16,7 @@ class ProjectsTest < ApplicationSystemTestCase
     assert_selector ".project-team", text: "Captain Planet"
     assert_selector ".project-status", text: "Green"
     assert_selector ".project-due-at", text: "2018-01-01"
+    assert_selector ".project-complete-at", text: "2018-01-08"
 
     assert_selector ".project-name", text: "No Team Project"
     assert_selector ".project-team", text: "Unassigned"
@@ -67,6 +68,22 @@ class ProjectsTest < ApplicationSystemTestCase
     click_on "Save"
 
     assert_text project_start_date
+  end
+
+  test "setting a project complete date" do
+    project = create(:project, name: "Take Over the World")
+    project.start Week.current - 2.weeks
+
+    projected_complete_date = Week.current
+
+    visit projects_url
+
+    click_on project.name
+    click_on "Edit"
+    fill_in "project[complete_at]", with: projected_complete_date
+    click_on "Save"
+
+    assert_text projected_complete_date
   end
 
 

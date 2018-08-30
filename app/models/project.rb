@@ -2,7 +2,7 @@ class Project < ApplicationRecord
   validates :name, presence: true
   belongs_to :team, optional: true
 
-  scope :for_week, -> (week) {where("start_at <= ?", week)}
+  scope :for_week, -> (week) {where("start_at <= ? and complete_at is null", week)}
 
   def self.status_options
     %w[Green Yellow Red]
@@ -19,6 +19,11 @@ class Project < ApplicationRecord
 
   def start(week=Week.current)
     self.start_at = week
+    self.save
+  end
+
+  def complete
+    self.complete_at = Date.today
     self.save
   end
 end
