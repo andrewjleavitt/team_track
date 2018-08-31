@@ -31,6 +31,8 @@ class PlanTest < ActiveSupport::TestCase
     assert_equal(2, projects.count)
 
     project.complete
+
+    projects = Plan.new(Week.current + 1.week).projects_for_week
     assert_equal(1, projects.count)
   end
 end
