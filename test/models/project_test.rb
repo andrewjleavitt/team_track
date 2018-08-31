@@ -58,7 +58,7 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal(2, next_week_projects.count)
   end
 
-  test "projects_for_week returns projects that are not complete" do
+  test "#for_week returns projects that are not complete" do
     team = create(:team)
     project = create(:project, team: team, start_at: Week.current)
     create(:project, team: team, start_at: Week.current)
@@ -68,7 +68,14 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal(2, projects.count)
 
     project.complete
-    projects = Project.for_week(Week.current)
+
+    projects = Project.for_week(Week.current + 1.week)
     assert_equal(1, projects.count)
+  end
+
+  test "#for_week includes projects that are completed after a given week" do
+    create(:project, start_at: Week.current - 1.week, complete_at: Week.current + 1.week)
+
+    assert_equal(1, Project.for_week(Week.current).count)
   end
 end

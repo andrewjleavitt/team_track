@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :plans, only: [:index, :new, :create]
   resources :weekly_plans, only: [:index, :create, :show]
   resources :teams, only: [:index, :new, :create, :show]
-  resources :projects, except: :destroy
+  resources :projects, except: :destroy do
+    member do
+      patch :finish
+    end
+  end
   resources :assignments, only: [:index, :new, :create, :edit, :update]
 end

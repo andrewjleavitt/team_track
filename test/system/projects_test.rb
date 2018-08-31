@@ -42,6 +42,13 @@ class ProjectsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Take Over the World"
   end
 
+  test "finishing a project from the project details page" do
+    project = create(:project, name: "Take Over the World")
+    visit project_path project
+    click_button "Finish Project"
+    assert_text "Finished"
+  end
+
   test "setting a project due date" do
     project = create(:project, name: "Take Over the World")
     project_due_date = Date.today + 1.month

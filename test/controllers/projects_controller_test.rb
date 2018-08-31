@@ -39,4 +39,10 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     patch project_url(project), params: { project: { name: 'Updated Project Name' } }
     assert_redirected_to project_url(project)
   end
+
+  test "should finish a project" do
+    project = create(:project)
+    patch finish_project_url(project)
+    assert_redirected_to project_url(project)
+  end
 end

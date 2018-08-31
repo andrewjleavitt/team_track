@@ -29,6 +29,12 @@ class ProjectsController < ApplicationController
     redirect_to(project)
   end
 
+  def finish
+    project = Project.find(params[:id])
+    project.complete
+    redirect_to(project)
+  end
+
   private
 
   def all_teams

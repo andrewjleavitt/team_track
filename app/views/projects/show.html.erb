@@ -2,5 +2,6 @@
 <p>Project Start: <%= @project.start_at %></p>
 <p>Project Due: <%= @project.due_at %></p>
 <p>Project Completed: <%= @project.complete_at %></p>
-<p>Project Status: <%= @project.status %></p>
+<p>Project Status: <%= @project.complete_at.present? ? "Finished" : @project.status %></p>
 <%= link_to "Edit", edit_project_path %>
+<%= button_to "Finish Project", finish_project_path, method: :patch %>

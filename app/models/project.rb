@@ -2,7 +2,7 @@ class Project < ApplicationRecord
   validates :name, presence: true
   belongs_to :team, optional: true
 
-  scope :for_week, -> (week) {where("start_at <= ? and complete_at is null", week)}
+  scope :for_week, -> (week) {where("start_at <= ? and coalesce(complete_at, ?) > ?", week, Week.current + 1000.years, week)}
 
   def self.status_options
     %w[Green Yellow Red]
