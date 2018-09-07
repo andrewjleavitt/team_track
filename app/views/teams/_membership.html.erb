@@ -1,0 +1,18 @@
+<table>
+  <thead>
+  <tr>
+    <td>Name</td>
+    <td>Role</td>
+    <td>Joined</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% team.active_assignments.each do |assignment| %>
+    <tr>
+      <td class="team-member" class="team-member"><%= link_to assignment.person.name, assignment.person %></td>
+      <td><%= assignment.role %></td>
+      <td><%= assignment.effective_date %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

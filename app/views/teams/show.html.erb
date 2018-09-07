@@ -1,23 +1,8 @@
 <h1><%= @team.name %></h1>
 <h2>Team Membership</h2>
-<Table>
-  <thead>
-  <tr>
-    <td>Name</td>
-    <td>Role</td>
-    <td>Joined</td>
-  </tr>
-  </thead>
-  <tbody>
-  <% @team.active_assignments.each do |assignment| %>
-    <tr>
-      <td class="team-member" class="team-member"><%= assignment.person.name %></td>
-      <td><%= assignment.role %></td>
-      <td><%= assignment.effective_date %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</Table>
+<%= render 'teams/membership',
+    team: @team
+%>
 
 <%= render 'projects/project_list_item',
     project_title: "Current Projects",
