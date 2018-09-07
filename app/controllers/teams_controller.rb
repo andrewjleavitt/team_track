@@ -15,6 +15,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @team_projects = @team.projects
   end
 
   private

@@ -3,6 +3,8 @@
 <%= link_to "New Project", new_project_path %>
 
 
-<%= render 'project_list_item', projects: @projects %>
+<%= render 'project_list_item',
+    project_title: nil,
+    projects: @projects %>
 
 

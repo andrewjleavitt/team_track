@@ -29,7 +29,8 @@ class TeamsTest < ApplicationSystemTestCase
   test "viewing team details shows members who are currently assigned to a team" do
     team = create(:team, name: "Super-Squad!")
     person = create(:person)
-    assignment = create(:assignment, team: team, person: person, effective_date: 1.week.ago)
+    effective_week = Week.current - 1.week
+    assignment = create(:assignment, team: team, person: person, role: "Ninja", effective_date: effective_week)
 
     visit teams_url
     click_on team.name
@@ -37,7 +38,9 @@ class TeamsTest < ApplicationSystemTestCase
     assert_selector "h1", text: team.name
     assert_selector "h2", text: "Team Membership"
 
-    assert_selector "li.team-member", text: person.name
+    assert_text person.name
+    assert_text assignment.role
+    assert_text effective_week
   end
 
   test "viewing team details show projectes assigned to the team ordered by due date" do
@@ -47,10 +50,9 @@ class TeamsTest < ApplicationSystemTestCase
 
     visit team_url team
 
-    assert_selector "h1", text: team.name
-    assert_selector "h2", text: "Assigned Projects"
+    assert_text team.name
+    assert_text "Current Projects"
 
     assert_selector ".project-name", text: project.name
   end
-
 end
