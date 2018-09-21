@@ -5,4 +5,8 @@ class Person < ApplicationRecord
   def active_assignments
     assignments.active
   end
+
+  def assign_to team, effective_date = Week.current
+   assignments.create(team: team, effective_date: effective_date)
+  end
 end

@@ -7,7 +7,7 @@
   </tr>
   </thead>
   <tbody>
-  <% team.active_assignments.each do |assignment| %>
+  <% assignments.each do |assignment| %>
     <tr>
       <td class="team-member" class="team-member"><%= link_to assignment.person.name, assignment.person %></td>
       <td><%= assignment.role %></td>

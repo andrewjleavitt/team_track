@@ -1,8 +1,10 @@
 <h1><%= @team.name %></h1>
 <h2>Team Membership</h2>
+
 <%= render 'teams/membership',
-    team: @team
+    assignments: @team.active_assignments
 %>
+<%= link_to "Team Membership History", history_team_path(week: Week.current) %>
 
 <%= render 'projects/project_list_item',
     project_title: "Current Projects",

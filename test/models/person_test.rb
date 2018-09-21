@@ -12,20 +12,29 @@ class PersonTest < ActiveSupport::TestCase
     person = create(:person)
 
     active_assignment = create(
-        :assignment,
-        person: person,
-        team: create(:team),
-        effective_date: 1.day.ago,
+      :assignment,
+      person: person,
+      team: create(:team),
+      effective_date: 1.day.ago,
     )
 
     inactive_assignment = create(
-        :assignment,
-        person: person,
-        team: create(:team),
-        effective_date: 1.day.from_now,
+      :assignment,
+      person: person,
+      team: create(:team),
+      effective_date: 1.day.from_now,
     )
 
     assert_includes person.active_assignments, active_assignment
     refute_includes person.active_assignments, inactive_assignment
+  end
+
+  test "#assign_to assigns a person to a team" do
+    team = create(:team)
+    person = create(:person)
+
+    person.assign_to team
+
+    assert_includes person.teams, team
   end
 end

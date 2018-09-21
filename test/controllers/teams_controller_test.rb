@@ -27,4 +27,10 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
     get team_url team
     assert_response :success
   end
+
+  test "should get history" do
+    team = create(:team)
+    get history_team_url team
+    assert_response :success
+  end
 end

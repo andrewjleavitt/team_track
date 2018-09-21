@@ -1,0 +1,5 @@
+<h1><%= @team.name %> Team Membership for <%= @week %></h1>
+<%= link_to "Previous", history_team_path(id: @team.id, week: @previous_week) %>
+<%= link_to "next", history_team_path(id: @team.id, week: @next_week) %><% @memberships.each do |assignment| %>
+  <p><%= assignment.person.name %></p>
+<% end %>

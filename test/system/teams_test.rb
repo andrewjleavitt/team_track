@@ -55,4 +55,25 @@ class TeamsTest < ApplicationSystemTestCase
 
     assert_selector ".project-name", text: project.name
   end
+
+  test "viewing the membership history of a team" do
+    team = create(:team, name: "Super-Squad")
+    person1 = create(:person, name: "Captain Amazing")
+    person2 = create(:person, name: "The Shoveler")
+    create(:person, name: "Waffle Man")
+
+    person1.assign_to team, Week.current - 1.week
+    person2.assign_to team
+
+    visit team_url team
+    click_on "History"
+
+    assert_text "Captain Amazing"
+    assert_text "The Shoveler"
+
+    click_on "Previous"
+
+    assert_text "Captain Amazing"
+    refute_text "The Shoveler"
+  end
 end

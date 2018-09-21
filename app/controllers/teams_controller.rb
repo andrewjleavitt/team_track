@@ -18,10 +18,17 @@ class TeamsController < ApplicationController
     @team_projects = @team.projects
   end
 
+  def history
+    @week = params[:week].nil? ? Week.current : params[:week].to_date
+    @previous_week = @week - 1.week
+    @next_week = @week + 1.week
+    @team = Team.find(params[:id])
+    @memberships = @team.active_assignments @week
+  end
+
   private
 
   def team_params
     params.require(:team).permit(:name)
   end
-
 end
