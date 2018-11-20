@@ -1,15 +1,24 @@
 <h1>Assignments</h1>
 <%= link_to "New Assignment", new_assignment_path %>
 
-<ul>
+<table>
+  <thead>
+  <tr>
+    <td>Person</td>
+    <td>Team</td>
+    <td>Role</td>
+    <td>Effective Date</td>
+    <td>Completion Date</td>
+  </tr>
+  </thead>
   <% @assignments.each do |assignment| %>
-    <li class="assignment">
-      <%= assignment.person.name %>,
-      Team: <%= assignment.team.name %>,
-      Role: <%= assignment.role %>,
-      <%= assignment.effective_date %>,
-      <%= assignment.completion_date %>
-      <%= link_to "Edit", edit_assignment_url(assignment) %>
-    </li>
+    <tr class="assignment">
+      <td><%= assignment.person.name %></td>
+      <td>Team: <%= assignment.team.name %></td>
+      <td>Role: <%= assignment.role %></td>
+      <td><%= assignment.effective_date %></td>
+      <td><%= assignment.completion_date %></td>
+      <td><%= link_to "Edit", edit_assignment_url(assignment) %></td>
+    </tr>
   <% end %>
-</ul>
+</table>

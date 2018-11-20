@@ -20,7 +20,7 @@ class AssignmentsTest < ApplicationSystemTestCase
     select effective_date, from: "assignment[effective_date]"
     click_on "Save"
     assert_selector ".notice", text: "Mr. T has been assigned to A-Team"
-    assert_selector "li.assignment", text: "Mr. T, Team: A-Team, Role: Engineer, #{effective_date}"
+    assert_selector "tr.assignment", text: "Mr. T Team: A-Team Role: Engineer #{effective_date}"
   end
 
   test "completing an assignment" do
@@ -29,12 +29,12 @@ class AssignmentsTest < ApplicationSystemTestCase
     assignment = create(:assignment, team: create(:team), person: create(:person), role: "Engineer", effective_date: effective_date, completion_date: nil)
 
     visit assignments_url
-    within "li.assignment", text: assignment.person.name do
+    within "tr.assignment", text: assignment.person.name do
       click_on "Edit"
     end
     select completion_date, from: "assignment[completion_date]"
     click_on "Save"
 
-    assert_selector "li.assignment", text: "#{assignment.person.name}, Team: #{assignment.team.name}, Role: Engineer, #{effective_date}, #{completion_date}"
+    assert_selector "tr.assignment", text: "#{assignment.person.name} Team: #{assignment.team.name} Role: Engineer #{effective_date} #{completion_date}"
   end
 end
