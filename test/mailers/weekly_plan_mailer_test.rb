@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class WeeklyPlanMailerTest < ActionMailer::TestCase
   test "send_plan.html.erb" do
@@ -8,8 +8,8 @@ class WeeklyPlanMailerTest < ActionMailer::TestCase
       email.deliver_now
     end
 
-    assert_equal ['notifications@weekly-team-planner.herokuapp.com'], email.from
-    assert_equal ['test@example.com'], email.to
+    assert_equal ["notifications@weekly-team-planner.herokuapp.com"], email.from
+    assert_equal ["test@example.com"], email.to
     assert_equal "The Plan for the Week", email.subject
   end
 end

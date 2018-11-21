@@ -8,6 +8,6 @@ class Assignment < ApplicationRecord
 
   def complete week
     self.completion_date = week
-    self.save
+    save
   end
 end

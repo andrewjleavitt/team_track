@@ -2,7 +2,7 @@ class Project < ApplicationRecord
   validates :name, presence: true
   belongs_to :team, optional: true
 
-  scope :for_week, -> (week) {where("start_at <= ? and coalesce(complete_at, ?) > ?", week, Week.current + 1000.years, week)}
+  scope :for_week, ->(week) {where("start_at <= ? and coalesce(complete_at, ?) > ?", week, Week.current + 1000.years, week)}
 
   def self.status_options
     %w[Green Yellow Red]
@@ -14,16 +14,16 @@ class Project < ApplicationRecord
 
   def assign_to(team)
     self.team = team
-    self.save
+    save
   end
 
-  def start(week=Week.current)
+  def start(week = Week.current)
     self.start_at = week
-    self.save
+    save
   end
 
   def complete
     self.complete_at = Date.today
-    self.save
+    save
   end
 end

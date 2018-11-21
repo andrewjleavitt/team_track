@@ -45,8 +45,8 @@ class TeamsTest < ApplicationSystemTestCase
 
   test "viewing team details show projectes assigned to the team ordered by due date" do
     team = create(:team, name: "Super-Squad!")
-    project = create(:project, team: team, due_at: '2018-01-08')
-    create(:project, name: "Expedited Project", team: team, due_at: '2018-01-01')
+    project = create(:project, team: team, due_at: "2018-01-08")
+    create(:project, name: "Expedited Project", team: team, due_at: "2018-01-01")
 
     visit team_url team
 

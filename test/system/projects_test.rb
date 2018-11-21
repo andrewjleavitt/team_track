@@ -92,6 +92,4 @@ class ProjectsTest < ApplicationSystemTestCase
 
     assert_text projected_complete_date
   end
-
-
 end

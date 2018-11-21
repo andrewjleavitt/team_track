@@ -12,7 +12,7 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-    assignment =  Assignment.create!(assignment_params)
+    assignment = Assignment.create!(assignment_params)
     flash.notice = "#{assignment.person.name} has been assigned to #{assignment.team.name}"
     redirect_to assignments_url
   end

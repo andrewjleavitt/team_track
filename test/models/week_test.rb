@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class WeekTest < ActiveSupport::TestCase
   test "#weeks" do
@@ -33,9 +33,9 @@ class WeekTest < ActiveSupport::TestCase
   end
 
   test "end" do
-    date_in_week = Date.parse("2018-01-03")
+    date_in_week = Date.parse("2018-07-03")
     date_end_week = Date.parse("2018-07-01")
 
-    assert_equal(date_end_week, Week.new(date_end_week).end)
+    assert_equal(date_end_week, Week.new(date_in_week).end)
   end
 end

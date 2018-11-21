@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class PlanTest < ActiveSupport::TestCase
   test "#initialze with a week" do

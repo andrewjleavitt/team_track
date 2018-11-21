@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ProjectTest < ActiveSupport::TestCase
   test "#status_options" do
@@ -43,7 +43,6 @@ class ProjectTest < ActiveSupport::TestCase
     project.team = nil
     assert(project.valid?)
   end
-
 
   test "#projects_for_week" do
     team = create(:team)

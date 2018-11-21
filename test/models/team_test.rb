@@ -1,7 +1,6 @@
-require 'test_helper'
+require "test_helper"
 
 class TeamTest < ActiveSupport::TestCase
-
   test "#active_assignments" do
     team = create(:team)
 
@@ -28,9 +27,5 @@ class TeamTest < ActiveSupport::TestCase
     project = create(:project, team: team)
 
     assert_equal([project], team.projects)
-  end
-
-  test "#project_list" do
-    
   end
 end

@@ -7,6 +7,6 @@ class Person < ApplicationRecord
   end
 
   def assign_to team, effective_date = Week.current
-   assignments.create(team: team, effective_date: effective_date)
+    assignments.create(team: team, effective_date: effective_date)
   end
 end

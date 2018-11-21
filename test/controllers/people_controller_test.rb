@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class PeopleControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -16,8 +16,8 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create person" do
-    assert_difference('Person.count') do
-      post people_url, params: { person: { name: 'Joe Cool'} }
+    assert_difference("Person.count") do
+      post people_url, params: {person: {name: "Joe Cool"}}
     end
 
     assert_redirected_to people_path
@@ -29,13 +29,12 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-
     get edit_person_url(@person)
     assert_response :success
   end
 
   test "should update person" do
-    patch person_url(@person), params: { person: { name: 'Updated Name' } }
+    patch person_url(@person), params: {person: {name: "Updated Name"}}
     assert_redirected_to person_url(@person)
   end
 end

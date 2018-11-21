@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class AssignmentTest < ActiveSupport::TestCase
   test "#active when given a week argument" do
@@ -6,8 +6,8 @@ class AssignmentTest < ActiveSupport::TestCase
       :assignment,
       team: create(:team),
       person: create(:person),
-      effective_date: (1.week.ago),
-      completion_date: (Date.today.beginning_of_week + 1.week)
+      effective_date: 1.week.ago,
+      completion_date: (Date.today.beginning_of_week + 1.week),
     )
 
     assert_equal(0, Assignment.active(Date.today.beginning_of_week - 1.week - 1.day).count)
@@ -20,8 +20,8 @@ class AssignmentTest < ActiveSupport::TestCase
       :assignment,
       team: create(:team),
       person: create(:person),
-      effective_date: (1.week.ago),
-      completion_date: nil
+      effective_date: 1.week.ago,
+      completion_date: nil,
     )
 
     week_to_complete = Week.current - 1.week

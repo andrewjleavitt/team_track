@@ -1,7 +1,6 @@
-require 'test_helper'
+require "test_helper"
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
-
   test "should get index" do
     get projects_url
     assert_response :success
@@ -14,8 +13,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create project" do
     project_attributes = attributes_for(:project)
-    assert_difference('Project.count') do
-      post projects_url, params: { project: project_attributes }
+    assert_difference("Project.count") do
+      post projects_url, params: {project: project_attributes}
     end
 
     assert_match("Created #{project_attributes[:name]}", flash[:notice])
@@ -36,7 +35,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update project" do
     project = create(:project)
-    patch project_url(project), params: { project: { name: 'Updated Project Name' } }
+    patch project_url(project), params: {project: {name: "Updated Project Name"}}
     assert_redirected_to project_url(project)
   end
 

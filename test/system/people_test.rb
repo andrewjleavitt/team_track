@@ -1,7 +1,6 @@
 require "application_system_test_case"
 
 class PeopleTest < ApplicationSystemTestCase
-
   setup do
     @team = create(:team)
     @person = create(:person, name: "Gentleman Steve")
