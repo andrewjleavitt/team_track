@@ -34,7 +34,7 @@ class WeekTest < ActiveSupport::TestCase
 
   test "end" do
     date_in_week = Date.parse("2018-07-03")
-    date_end_week = Date.parse("2018-07-01")
+    date_end_week = Date.parse("2018-07-08")
 
     assert_equal(date_end_week, Week.new(date_in_week).end)
   end
