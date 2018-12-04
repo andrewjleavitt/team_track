@@ -14,5 +14,6 @@ Rails.application.routes.draw do
       patch :finish
     end
   end
+  resources :project_categories, only: [:index, :new, :create]
   resources :assignments, only: [:index, :new, :create, :edit, :update]
 end

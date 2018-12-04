@@ -1,0 +1,9 @@
+<h1>Project Categories</h1>
+
+<%= link_to "New project category", new_project_category_url %>
+
+<ul>
+  <% @project_categories.each do |project_category| %>
+    <li class="project-category"><%= project_category.name %></li>
+  <% end %>
+</ul>
