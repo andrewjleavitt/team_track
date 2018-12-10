@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_171553) do
+ActiveRecord::Schema.define(version: 2018_12_07_212236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 2018_12_04_171553) do
     t.bigint "team_id"
     t.date "start_at"
     t.date "complete_at"
+    t.bigint "project_category_id"
+    t.integer "cost"
+    t.index ["project_category_id"], name: "index_projects_on_project_category_id"
     t.index ["team_id"], name: "index_projects_on_team_id"
   end
 
@@ -92,5 +95,6 @@ ActiveRecord::Schema.define(version: 2018_12_04_171553) do
   add_foreign_key "assignments", "teams"
   add_foreign_key "plans", "projects"
   add_foreign_key "plans", "teams"
+  add_foreign_key "projects", "project_categories"
   add_foreign_key "projects", "teams"
 end

@@ -92,4 +92,29 @@ class ProjectsTest < ApplicationSystemTestCase
 
     assert_text projected_complete_date
   end
+
+  test "assigning a project to a project category" do
+    project = create(:project, name: "Take Over the World")
+    project_category = ProjectCategory.create(name: "Doomsday Scenarios")
+
+    visit projects_url
+    click_on project.name
+    click_on "Edit"
+    select project_category.name, from: "project[project_category_id]"
+    click_on "Save"
+
+    assert_text project_category.name
+  end
+
+  test "project cost" do
+    project = create(:project, name: "Pricey Project")
+
+    visit projects_url
+    click_on project.name
+    click_on "Edit"
+    fill_in "project[cost]", with: 500
+    click_on "Save"
+
+    assert_text "Project Cost: 500"
+  end
 end

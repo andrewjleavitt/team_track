@@ -6,13 +6,19 @@ class ProjectCategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get show" do
+    project_category = ProjectCategory.create(name: "Tigers")
+    get project_category_url project_category
+    assert_response :success
+  end
+
   test "should get new" do
     get new_project_category_url
     assert_response :success
   end
 
   test "should create project category" do
-    project_category_attributes = { name: "abcdef" }
+    project_category_attributes = {name: "abcdef"}
     assert_difference("ProjectCategory.count") do
       post project_categories_url, params: {project_category: project_category_attributes}
     end

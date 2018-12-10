@@ -7,6 +7,11 @@ class ProjectCategoriesController < ApplicationController
     @project_category = ProjectCategory.new
   end
 
+  def show
+    @project_category = ProjectCategory.find(params["id"])
+    @projects = @project_category.projects
+  end
+
   def create
     project_category = ProjectCategory.create(project_category_params)
     flash.notice = "Created #{project_category.name}"

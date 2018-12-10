@@ -4,6 +4,6 @@
 
 <ul>
   <% @project_categories.each do |project_category| %>
-    <li class="project-category"><%= project_category.name %></li>
+    <li class="project-category"><%= link_to project_category.name, project_category %></li>
   <% end %>
 </ul>

@@ -9,6 +9,12 @@ class ProjectTest < ActiveSupport::TestCase
     assert_not(build(:project, name: nil).valid?)
   end
 
+  test "project cost" do
+    project = build(:project)
+    project.cost = 500
+    assert_equal(500, project.cost)
+  end
+
   test "#team_name" do
     project = build(:project)
     team = build(:team)
@@ -76,5 +82,15 @@ class ProjectTest < ActiveSupport::TestCase
     create(:project, start_at: Week.current - 1.week, complete_at: Week.current + 1.week)
 
     assert_equal(1, Project.for_week(Week.current).count)
+  end
+
+  test "#project_category_name returns the name of the category a project is assigned to" do
+    project = build(:project, project_category: build(:project_category, name: "Doomsday Projects"))
+    assert_equal("Doomsday Projects", project.project_category_name)
+  end
+
+  test "#project_category_name when a project_category is not assigned" do
+    project = build(:project, project_category: nil)
+    assert_equal("No Category Assigned", project.project_category_name)
   end
 end
