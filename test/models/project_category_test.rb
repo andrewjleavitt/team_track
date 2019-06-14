@@ -9,11 +9,24 @@ class ProjectCategoryTest < ActiveSupport::TestCase
   end
 
   test "#total_cost" do
-    category = build(:project_category, name: "My Project Category")
-    create(:project, cost: 5, project_category: category)
-    create(:project, cost: 5, project_category: category)
-    create(:project, cost: 5, project_category: category)
+    team = create(:team)
+    person = create(:person)
+    person.assign_to(team, 6.weeks.ago.beginning_of_week)
 
-    assert_equal(15, category.total_cost)
+    category = build(:project_category, name: "My Project Category")
+    p1 = create(:project, project_category: category)
+    p2 = create(:project, project_category: category)
+    p3 = create(:project, project_category: category)
+
+    p1.assign_to(team)
+    p2.assign_to(team)
+    p3.assign_to(team)
+
+    p1.start(4.weeks.ago.beginning_of_week)
+    p2.start(4.weeks.ago.beginning_of_week)
+    p3.start(4.weeks.ago.beginning_of_week)
+
+
+    assert_equal(30_000, category.total_cost)
   end
 end

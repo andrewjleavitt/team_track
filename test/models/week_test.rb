@@ -38,4 +38,18 @@ class WeekTest < ActiveSupport::TestCase
 
     assert_equal(date_end_week, Week.new(date_in_week).end)
   end
+
+  test "#between returns the weeks between two dates" do
+    start_date = Date.parse("2018-01-01")
+    end_date = Date.parse("2018-01-31")
+    expected_weeks = [
+      Week.new(Date.parse("2018-01-01")),
+      Week.new(Date.parse("2018-01-08")),
+      Week.new(Date.parse("2018-01-15")),
+      Week.new(Date.parse("2018-01-22")),
+      Week.new(Date.parse("2018-01-29"))
+    ]
+
+    assert_equal(expected_weeks, Week.between(start_date, end_date))
+  end
 end

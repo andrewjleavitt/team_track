@@ -31,4 +31,8 @@ class Project < ApplicationRecord
     self.complete_at = Date.today
     save
   end
+
+  def cost
+    Cost.for(self).cost
+  end
 end

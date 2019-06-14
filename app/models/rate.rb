@@ -1,5 +1,5 @@
 class Rate
-  def self.amount
-    100_000
+  def self.weekly
+    2_000
   end
 end

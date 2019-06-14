@@ -11,6 +11,10 @@ class Week
     new(Date.parse(date).beginning_of_week)
   end
 
+  def self.between start_date, end_date
+    (start_date..end_date).select(&:monday?).map {|monday| new(monday)}
+  end
+
   def initialize week
     @week = week.beginning_of_week
   end
@@ -25,5 +29,9 @@ class Week
 
   def display
     @week.strftime("%F")
+  end
+
+  def == other
+    display = other.display
   end
 end

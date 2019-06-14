@@ -9,10 +9,17 @@ class ProjectTest < ActiveSupport::TestCase
     assert_not(build(:project, name: nil).valid?)
   end
 
-  test "project cost" do
+  test "#cost" do
     project = build(:project)
-    project.cost = 500
-    assert_equal(500, project.cost)
+
+    mock = Minitest::Mock.new
+    mock.expect :cost, 193
+
+    Cost.stub :new, mock do
+      project.cost
+    end
+
+    assert_mock mock
   end
 
   test "#team_name" do

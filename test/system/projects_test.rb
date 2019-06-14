@@ -105,16 +105,4 @@ class ProjectsTest < ApplicationSystemTestCase
 
     assert_text project_category.name
   end
-
-  test "project cost" do
-    project = create(:project, name: "Pricey Project")
-
-    visit projects_url
-    click_on project.name
-    click_on "Edit"
-    fill_in "project[cost]", with: 500
-    click_on "Save"
-
-    assert_text "Project Cost: 500"
-  end
 end
