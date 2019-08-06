@@ -26,7 +26,6 @@ class ProjectCategoryTest < ActiveSupport::TestCase
     p2.start(4.weeks.ago.beginning_of_week)
     p3.start(4.weeks.ago.beginning_of_week)
 
-
     assert_equal(30_000, category.total_cost)
   end
 end

@@ -52,4 +52,13 @@ class WeekTest < ActiveSupport::TestCase
 
     assert_equal(expected_weeks, Week.between(start_date, end_date))
   end
+
+  test "#==" do
+    week = Week.new(Date.parse("2019-01-01"))
+    same_week = Week.new(Date.parse("2019-01-01"))
+    different_week = Week.new(Date.parse("2019-02-01"))
+
+    assert(week == same_week)
+    assert(week != different_week)
+  end
 end

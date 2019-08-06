@@ -32,6 +32,6 @@ class Week
   end
 
   def == other
-    display = other.display
+    @week.strftime("%F") == other.display
   end
 end
