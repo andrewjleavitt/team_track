@@ -1,7 +1,31 @@
 <h1>Teams</h1>
 <%= link_to "New Team", new_team_path %>
-<ul>
+
+<style>
+  .container {
+    display: flex;
+  }
+
+  li.team {
+    list-style: none;
+  }
+
+  ul {
+    padding-inline-start: 0;
+    padding-inline-end: 40px;
+  }
+</style>
+
+<div class="container">
   <% @teams.each do |team| %>
-    <li class="team"><%= link_to team.name, team %></li>
+    <div class="item">
+      <ul>
+        <li class="team"><%= link_to team.name, team %></li>
+        <% team.people.each do |member| %>
+          <li class="team member"><%= member.name %></li>
+
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-</ul>
+</div>
