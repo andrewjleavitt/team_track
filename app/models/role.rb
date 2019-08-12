@@ -7,6 +7,7 @@ class Role
       "Designer",
       "Director",
       "Quality Assurance",
+      "Technical Writing",
     ]
   end
 end
