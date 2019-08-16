@@ -8,8 +8,8 @@ class TeamsController < ApplicationController
   end
 
   def create
-    team = Team.create(team_params)
-    flash.notice = "Created #{team.name}"
+    CreateTeam.new(team_params)
+    flash.notice = "Created #{team_params[:name]}"
     redirect_to teams_path
   end
 
