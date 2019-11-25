@@ -1,0 +1,27 @@
+Week,Team,Status,Track
+8/19/2019,*MSYNC,In Progress,Integrations Platform
+8/19/2019,*MSYNC,In Progress,Developer Platform (MVP)
+8/19/2019,*MSYNC,In Progress,QuickBooks: Role based service item mapping
+8/19/2019,Mavengers,In Progress,Support
+8/19/2019,Mavengers,In Progress,Marketing
+8/19/2019,Pentagon,Acceptance,"LDM enhancements, created date on rads, attach resource id on assignment fact, notes on rads"
+8/19/2019,Pentagon,Acceptance,"Code cleanup v2, blueprint creator spec, blank row refactor, dev env logging."
+8/19/2019,Pentagon,Acceptance,Maintenance v2
+8/19/2019,Pentagon,In Progress,Team stagings
+8/19/2019,Pentagon,Not Started,Dynamic Inputs
+8/19/2019,Pentagon,Not Started,Time entry dataset with time adjustments
+8/19/2019,RPM,In Progress,Resource Recommendations v1
+8/19/2019,RPM,In Progress,View Request History - UI
+8/19/2019,RPM,In Progress,Saved Views in Master Planning Investigation and RFC
+8/19/2019,RPM,In Progress,Resource Management and Access Groups Followup
+8/19/2019,RPM,Not Started,Add User Facing API End-Points for Access Group Memberships
+8/19/2019,Rogue Squadron,In Progress,View Projects without joining
+8/19/2019,Rogue Squadron,In Progress,Track Time and Expense permission
+8/19/2019,Rogue Squadron,On Hold,Resource & Estimate Custom Fields in Insights
+8/19/2019,Snowpeople,In Progress,Task Tracker 2.0
+8/19/2019,The 'M' Who Shall Not Be Named,In Progress,Currency Conversion
+8/19/2019,The 'M' Who Shall Not Be Named,Not Started,Access Groups - Surveys
+8/19/2019,Web Infrastructure,In Progress,MDS: <Input />
+8/19/2019,Web Infrastructure,In Progress,Custom Forms in Design System v1
+8/19/2019,Web Infrastructure,In Progress,MDS: Colors
+8/19/2019,Web Infrastructure,Not Started,MDS: <Select />

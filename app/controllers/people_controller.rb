@@ -18,7 +18,7 @@ class PeopleController < ApplicationController
   end
 
   def create
-    Person.create(people_params)
+    CreatePerson.new(people_params)
     redirect_to(people_url)
   end
 
